@@ -1,0 +1,323 @@
+ '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shaggy Lex Property Company | Premium Real Estate</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="logo-container">
+            <img src="static/image/shaggylex logo.png" alt="Shaggy Lex Property Company">
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#properties">Properties</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg"></div>
+        <div class="hero-particles" id="particles"></div>
+        <div class="hero-content">
+            <img src="static/image/shaggylex logo.png" alt="Shaggy Lex Property Company" class="hero-logo">
+            <h1>Find Your Dream Property</h1>
+            <p class="hero-subtitle">Premium Real Estate Solutions</p>
+            <p class="hero-description">
+                Discover exceptional properties tailored to your lifestyle. We combine luxury, comfort, and investment value to deliver unparalleled real estate experiences.
+            </p>
+            <div class="cta-buttons">
+                <a href="#properties" class="btn btn-primary">Explore Properties</a>
+                <a href="#contact" class="btn btn-outline">Get In Touch</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down" style="color: var(--primary-light); font-size: 1.5rem;"></i>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h3 class="counter" data-target="500">0</h3>
+                <p>Properties Sold</p>
+            </div>
+            <div class="stat-item">
+                <h3 class="counter" data-target="350">0</h3>
+                <p>Happy Clients</p>
+            </div>
+            <div class="stat-item">
+                <h3 class="counter" data-target="25">0</h3>
+                <p>Years Experience</p>
+            </div>
+            <div class="stat-item">
+                <h3 class="counter" data-target="50">0</h3>
+                <p>Expert Agents</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Properties Section -->
+    <section class="properties" id="properties">
+        <div class="section-header fade-in">
+            <h2>Featured Properties</h2>
+            <div class="accent-line"></div>
+            <p>Handpicked premium properties available for sale and rent</p>
+        </div>
+        
+        <!-- Search Bar -->
+        <div class="search-container">
+            <input type="text" id="propertySearch" placeholder="Search properties by name or location...">
+            <button class="btn btn-primary" onclick="searchProperties(document.getElementById('propertySearch').value)">
+                <i class="fas fa-search"></i> Search
+            </button>
+        </div>
+        
+        <div class="property-grid">
+            {% for property in properties %}
+            <div class="property-card fade-in" onclick="showPropertyDetails('{{ property.title }}', '{{ property.price }}', '{{ property.location }}', '{{ property.description }}')">
+                <div class="property-image">
+                    <i class="fas {{ property.icon }}"></i>
+                    <span class="property-badge">{{ property.badge }}</span>
+                    <span class="property-price">{{ property.price }}</span>
+                </div>
+                <div class="property-info">
+                    <h3>{{ property.title }}</h3>
+                    <div class="property-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        {{ property.location }}
+                    </div>
+                    <div class="property-features">
+                        <div class="feature">
+                            <i class="fas fa-bed"></i>
+                            <span>{{ property.beds }} Beds</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-bath"></i>
+                            <span>{{ property.baths }} Baths</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-ruler-combined"></i>
+                            <span>{{ property.sqft }} sqft</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-header fade-in">
+            <h2>Our Services</h2>
+            <div class="accent-line"></div>
+            <p>Comprehensive real estate solutions tailored to your needs</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card fade-in">
+                <div class="service-icon"><i class="fas fa-home"></i></div>
+                <h3>Property Sales</h3>
+                <p>Expert guidance through every step of buying or selling your property with maximum value and minimum stress.</p>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon"><i class="fas fa-key"></i></div>
+                <h3>Property Management</h3>
+                <p>Full-service property management including tenant screening, maintenance, and financial reporting.</p>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+                <h3>Investment Consulting</h3>
+                <p>Strategic investment advice to help you build and diversify your real estate portfolio effectively.</p>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon"><i class="fas fa-gavel"></i></div>
+                <h3>Legal Assistance</h3>
+                <p>Professional legal support for contracts, negotiations, and compliance with real estate regulations.</p>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon"><i class="fas fa-camera"></i></div>
+                <h3>Property Marketing</h3>
+                <p>High-impact marketing strategies including virtual tours, professional photography, and targeted campaigns.</p>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon"><i class="fas fa-handshake"></i></div>
+                <h3>Tenant Placement</h3>
+                <p>Comprehensive tenant screening and placement services to ensure reliable occupancy for your properties.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-content">
+            <div class="about-image fade-in">
+                <img src="static/image/1000089323.jpg" alt="Shaggy Lex Property Company">
+            </div>
+            <div class="about-text fade-in">
+                <h2>About Shaggy Lex Property Company</h2>
+                <p>Founded with a vision to transform the real estate experience, Shaggy Lex Property Company has established itself as a trusted name in premium property solutions. We combine deep market expertise with personalized service to deliver exceptional results.</p>
+                <p>Our team of dedicated professionals brings together decades of experience in residential, commercial, and investment properties. We believe in building lasting relationships based on trust, transparency, and outstanding performance.</p>
+                <ul class="about-features">
+                    <li><i class="fas fa-check-circle"></i><span>Licensed and certified real estate professionals</span></li>
+                    <li><i class="fas fa-check-circle"></i><span>Extensive network of premium property listings</span></li>
+                    <li><i class="fas fa-check-circle"></i><span>Personalized client approach and 24/7 support</span></li>
+                    <li><i class="fas fa-check-circle"></i><span>Proven track record of successful transactions</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="section-header fade-in">
+            <h2>Get In Touch</h2>
+            <div class="accent-line"></div>
+            <p>Ready to find your perfect property? Contact us today</p>
+        </div>
+        <div class="contact-content">
+            <div class="contact-info fade-in">
+                <h3>Contact Information</h3>
+                <p>Our team is ready to assist you with all your real estate needs. Reach out to us through any of the following channels.</p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div><strong>Phone</strong><span>09090069080<br>08023625315<br>07075661829</span></div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div><strong>Email</strong><span>shaggylexproperties@gmail.com</span></div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-location-dot"></i>
+                        <div><strong>Address</strong><span>19/20 Ashimowu street, gbagada lagos<br>Nigeria</span></div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div><strong>Business Hours</strong><span>Mon - Fri: 9:00 AM - 6:00 PM<br>Sat: 9:00 AM - 2:00 PM</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form fade-in">
+                <form id="contactForm" onsubmit="handleSubmit(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input type="text" name="first_name" required placeholder="John">
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input type="text" name="last_name" required placeholder="Doe">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" name="email" required placeholder="john@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" name="phone" placeholder="+1 (555) 000-0000">
+                    </div>
+                    <div class="form-group">
+                        <label>Interested In</label>
+                        <select name="interest">
+                            <option value="">Select an option</option>
+                            <option value="buy">Buying a Property</option>
+                            <option value="sell">Selling a Property</option>
+                            <option value="rent">Renting a Property</option>
+                            <option value="invest">Investment Opportunities</option>
+                            <option value="manage">Property Management</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea name="message" placeholder="Tell us about your requirements..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <img src="static/image/shaggylex logo.png" alt="Shaggy Lex Property Company">
+                <p>Your trusted partner in premium real estate. We turn property dreams into reality with expertise, integrity, and exceptional service.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#properties">Properties</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#">Buy Property</a></li>
+                    <li><a href="#">Sell Property</a></li>
+                    <li><a href="#">Rent Property</a></li>
+                    <li><a href="#">Property Management</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                    <li><a href="#">Disclaimer</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; {{ year }} Shaggy Lex Property Company. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Property Details Modal -->
+    <div class="modal" id="propertyModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2 id="modalTitle" style="font-family: 'Playfair Display', serif; margin-bottom: 1rem;"></h2>
+            <p id="modalPrice" style="color: var(--primary-light); font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem;"></p>
+            <p id="modalLocation" style="color: var(--gray); margin-bottom: 1rem;"></p>
+            <p id="modalDescription" style="color: #a1a1aa; line-height: 1.8; margin-bottom: 2rem;"></p>
+            <button class="btn btn-primary" onclick="closeModal(); document.getElementById('contact').scrollIntoView({behavior: 'smooth'});">
+                Schedule Viewing
+            </button>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">Message sent successfully!</div>
+
+    <script src="static/main.js"></script>
+</body>
+</html>
+
