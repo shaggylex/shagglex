@@ -90,7 +90,7 @@
             {% for property in properties %}
             <div class="property-card fade-in" onclick="showPropertyDetails('{{ property.title }}', '{{ property.price }}', '{{ property.location }}', '{{ property.description }}')">
                 <div class="property-image">
-                    <i class="fas {{ property.icon }}"></i>
+                    <img src="{{ property.icon }}" alt="{{ property.title }}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
                     <span class="property-badge">{{ property.badge }}</span>
                     <span class="property-price">{{ property.price }}</span>
                 </div>
