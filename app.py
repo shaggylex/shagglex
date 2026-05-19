@@ -35,7 +35,7 @@ properties_db = [
     {
         "id": 3,
         "title": "Oceanfront Estate",
-        "price": "₦2,500,000",
+        "price": "₦450,000,000",
         "location": "Miami Beach, FL",
         "beds": 6,
         "baths": 5,
