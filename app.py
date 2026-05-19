@@ -9,7 +9,7 @@ properties_db = [
      {
         "id": 1,
         "title": "Modern Luxury Villa",
-        "price": "$850,000",
+        "price": "₦850,000",
         "location": "Beverly Hills, CA",
         "beds": 5,
         "baths": 4,
@@ -22,8 +22,8 @@ properties_db = [
     {
         "id": 2,
         "title": "Skyline Penthouse",
-        "price": "$1,200,000",
-        "location": "Manhattan, NY",
+        "price": "₦400,000,000",
+        "location": "Semi Detached, Lagos",
         "beds": 3,
         "baths": 3,
         "sqft": "2,800",
@@ -35,7 +35,7 @@ properties_db = [
     {
         "id": 3,
         "title": "Oceanfront Estate",
-        "price": "$2,500,000",
+        "price": "₦2,500,000",
         "location": "Miami Beach, FL",
         "beds": 6,
         "baths": 5,
@@ -48,7 +48,7 @@ properties_db = [
     {
         "id": 4,
         "title": "Urban Downtown Loft",
-        "price": "$3,500/mo",
+        "price": "₦3,500/mo",
         "location": "Austin, TX",
         "beds": 2,
         "baths": 2,
@@ -61,7 +61,7 @@ properties_db = [
     {
         "id": 5,
         "title": "Alpine Mountain Retreat",
-        "price": "$1,800,000",
+        "price": "₦1,800,000",
         "location": "Aspen, CO",
         "beds": 4,
         "baths": 3,
@@ -74,7 +74,7 @@ properties_db = [
     {
         "id": 6,
         "title": "Family Suburban Home",
-        "price": "$650,000",
+        "price": "₦650,000",
         "location": "Naperville, IL",
         "beds": 4,
         "baths": 3,
