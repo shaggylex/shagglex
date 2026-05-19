@@ -15,7 +15,7 @@ properties_db = [
         "baths": 4,
         "sqft": "4,200",
         "badge": "For Sale",
-        "icon": "static/image/CEO-pics.jpg",
+        "icon": "static/image/ogudo 2.jpg",
         "description": "Stunning modern villa with panoramic city views, infinity pool, and smart home technology.",
         "featured": True
     },
@@ -28,7 +28,7 @@ properties_db = [
         "baths": 3,
         "sqft": "2,800",
         "badge": "For Sale",
-        "icon": "static/image/CEO-pics.jpg",
+        "icon": "static/image/ogudu gra.jpg",
         "description": "Exclusive penthouse with 360° skyline views, private elevator, and rooftop terrace.",
         "featured": True
     },
@@ -41,7 +41,7 @@ properties_db = [
         "baths": 5,
         "sqft": "5,500",
         "badge": "Premium",
-        "icon": "static/image/CEO-pics.jpg",
+        "icon": "static/image/opebi_unamdi.jpg",
         "description": "Direct ocean access, private beach, and resort-style amenities in this gated estate.",
         "featured": True
     },
@@ -54,7 +54,7 @@ properties_db = [
         "baths": 2,
         "sqft": "1,800",
         "badge": "For Rent",
-        "icon": "static/image/CEO-pics.jpg",
+        "icon": "static/image/ttpp.jpg",
         "description": "Industrial-chic loft in the heart of downtown with exposed brick and modern finishes.",
         "featured": False
     },
@@ -67,7 +67,7 @@ properties_db = [
         "baths": 3,
         "sqft": "3,600",
         "badge": "For Sale",
-        "icon": "static/image/CEO-pics.jpg",
+        "icon": "static/image/ogudu 1.jpg",
         "description": "Ski-in/ski-out luxury cabin with heated floors, stone fireplace, and mountain views.",
         "featured": False
     },
@@ -80,7 +80,7 @@ properties_db = [
         "baths": 3,
         "sqft": "2,900",
         "badge": "For Sale",
-        "icon": "static/image/CEO-pics.jpg",
+        "icon": "static/image/ikoyi.jpg",
         "description": "Perfect family home in top-rated school district with large backyard and finished basement.",
         "featured": False
     }
