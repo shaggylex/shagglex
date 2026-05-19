@@ -1,0 +1,9 @@
+services: 
+  - type: web
+    name: shaggylex
+    runtime: python
+    build_command: pip install -r requirements.txt
+    start_command: gunicorn app:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
