@@ -94,6 +94,16 @@
                     <span class="property-badge">{{ property.badge }}</span>
                     <span class="property-price">{{ property.price }}</span>
                 </div>
+                <div class="property-card">
+    <div class="image-scroll">
+        {% for img in property.images %}
+        <img src="{{ img }}" alt="{{ property.title }}">
+        {% endfor %}
+    </div>
+    <h2>{{ property.title }}</h2>
+    <p>{{ property.price }}</p>
+</div>
+
                 <div class="property-info">
                     <h3>{{ property.title }}</h3>
                     <div class="property-location">

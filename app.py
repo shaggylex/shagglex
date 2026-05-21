@@ -11,11 +11,16 @@ properties_db = [
         "title": "Modern Luxury Villa",
         "price": "₦850,000",
         "location": "Beverly Hills, CA",
+         "images": [  # <-- Multiple images instead of one icon
+            "static/image/ikoyi.jpg",
+            "static/image/ogudo 2.jpg",
+            "static/image/ogudu 1.jpg",
+            "static/image/ogudu gra.jpg"
+        ],
         "beds": 5,
         "baths": 4,
         "sqft": "4,200",
         "badge": "For Sale",
-        "icon": "static/image/ogudo 2.jpg",
         "description": "Stunning modern villa with panoramic city views, infinity pool, and smart home technology.",
         "featured": True
     },
@@ -28,7 +33,12 @@ properties_db = [
         "baths": 3,
         "sqft": "2,800",
         "badge": "For Sale",
-        "icon": "static/image/ogudu gra.jpg",
+        "images": [  # <-- Multiple images instead of one icon
+            "static/image/ikoyi.jpg",
+            "static/image/ogudo 2.jpg",
+            "static/image/ogudu 1.jpg",
+            "static/image/ogudu gra.jpg"
+        ],
         "description": "Exclusive penthouse with 360° skyline views, private elevator, and rooftop terrace.",
         "featured": True
     },
@@ -41,7 +51,12 @@ properties_db = [
         "baths": 5,
         "sqft": "5,500",
         "badge": "Premium",
-        "icon": "static/image/opebi_unamdi.jpg",
+         "images": [  # <-- Multiple images instead of one icon
+            "static/image/ikoyi.jpg",
+            "static/image/ogudo 2.jpg",
+            "static/image/ogudu 1.jpg",
+            "static/image/ogudu gra.jpg"
+        ],
         "description": "Direct ocean access, private beach, and resort-style amenities in this gated estate.",
         "featured": True
     },
@@ -54,7 +69,12 @@ properties_db = [
         "baths": 2,
         "sqft": "1,800",
         "badge": "For Rent",
-        "icon": "static/image/ttpp.jpg",
+         "images": [  # <-- Multiple images instead of one icon
+            "static/image/ikoyi.jpg",
+            "static/image/ogudo 2.jpg",
+            "static/image/ogudu 1.jpg",
+            "static/image/ogudu gra.jpg"
+        ],
         "description": "Industrial-chic loft in the heart of downtown with exposed brick and modern finishes.",
         "featured": False
     },
@@ -63,11 +83,16 @@ properties_db = [
         "title": "Alpine Mountain Retreat",
         "price": "₦1,800,000",
         "location": "Aspen, CO",
+         "images": [  # <-- Multiple images instead of one icon
+            "static/image/ikoyi.jpg",
+            "static/image/ogudo 2.jpg",
+            "static/image/ogudu 1.jpg",
+            "static/image/ogudu gra.jpg"
+        ],
         "beds": 4,
         "baths": 3,
         "sqft": "3,600",
         "badge": "For Sale",
-        "icon": "static/image/ogudu 1.jpg",
         "description": "Ski-in/ski-out luxury cabin with heated floors, stone fireplace, and mountain views.",
         "featured": False
     },
@@ -76,11 +101,16 @@ properties_db = [
         "title": "Family Suburban Home",
         "price": "₦650,000",
         "location": "Naperville, IL",
+         "images": [  # <-- Multiple images instead of one icon
+            "static/image/ikoyi.jpg",
+            "static/image/ogudo 2.jpg",
+            "static/image/ogudu 1.jpg",
+            "static/image/ogudu gra.jpg"
+        ],
         "beds": 4,
         "baths": 3,
         "sqft": "2,900",
         "badge": "For Sale",
-        "icon": "static/image/ikoyi.jpg",
         "description": "Perfect family home in top-rated school district with large backyard and finished basement.",
         "featured": False
     },
@@ -89,11 +119,16 @@ properties_db = [
         "title": "Alpine Mountain Retreat",
         "price": "₦1,800,000",
         "location": "Aspen, CO",
+         "images": [  # <-- Multiple images instead of one icon
+            "static/image/ikoyi.jpg",
+            "static/image/ogudo 2.jpg",
+            "static/image/ogudu 1.jpg",
+            "static/image/ogudu gra.jpg"
+        ],
         "beds": 4,
         "baths": 3,
         "sqft": "3,600",
         "badge": "For Sale",
-        "icon": "static/image/ogudu 1.jpg",
         "description": "Ski-in/ski-out luxury cabin with heated floors, stone fireplace, and mountain views.",
         "featured": False
     },
@@ -102,11 +137,16 @@ properties_db = [
         "title": "Alpine Mountain Retreat",
         "price": "₦1,800,000",
         "location": "Aspen, CO",
+         "images": [  # <-- Multiple images instead of one icon
+            "static/image/ikoyi.jpg",
+            "static/image/ogudo 2.jpg",
+            "static/image/ogudu 1.jpg",
+            "static/image/ogudu gra.jpg"
+        ],
         "beds": 4,
         "baths": 3,
         "sqft": "3,600",
         "badge": "For Sale",
-        "icon": "static/image/ogudu 1.jpg",
         "description": "Ski-in/ski-out luxury cabin with heated floors, stone fireplace, and mountain views.",
         "featured": False
     },

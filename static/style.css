@@ -200,6 +200,27 @@ nav.scrolled {
     flex-wrap: wrap;
 }
 
+.image-scroll {
+    display: flex;
+    overflow-x: auto;  /* <-- Makes it horizontally scrollable */
+    scroll-snap-type: x mandatory;
+    gap: 10px;
+    padding: 10px;
+}
+
+.image-scroll img {
+    min-width: 100%;   /* Each image takes full width */
+    height: 250px;
+    object-fit: cover;
+    scroll-snap-align: start;
+    border-radius: 10px;
+}
+
+/* Hide scrollbar but keep functionality */
+.image-scroll::-webkit-scrollbar {
+    display: none;
+}
+
 .btn {
     padding: 1rem 2.5rem;
     border-radius: 50px;
