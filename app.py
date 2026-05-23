@@ -115,7 +115,7 @@ properties_db = [
         "featured": False
     },
      {
-        "id": 5,
+        "id": 7,
         "title": "Alpine Mountain Retreat",
         "price": "₦1,800,000",
         "location": "Aspen, CO",
@@ -133,7 +133,7 @@ properties_db = [
         "featured": False
     },
     {
-        "id": 5,
+        "id": 8,
         "title": "Alpine Mountain Retreat",
         "price": "₦1,800,000",
         "location": "Aspen, CO",
