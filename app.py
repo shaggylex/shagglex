@@ -132,7 +132,7 @@ properties_db = [
         "description": "Ski-in/ski-out luxury cabin with heated floors, stone fireplace, and mountain views.",
         "featured": False
     },
-     {
+    {
         "id": 5,
         "title": "Alpine Mountain Retreat",
         "price": "₦1,800,000",
