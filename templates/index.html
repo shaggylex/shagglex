@@ -319,6 +319,33 @@
         </div>
     </div>
 
+    <!-- Video Section -->
+{% if property.videos %}
+<div class="video-gallery">
+    {% for video in property.videos %}
+    <video controls width="100%" poster="{{ property.images[0] }}">
+        <source src="static/videos/pratical_video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    {% endfor %}
+</div>
+{% endif %}
+
+<!-- Existing Image Gallery -->
+<div class="image-gallery">
+    {% for image in property.images %}
+    <img src="static/images/pratical_image.jpg" alt="{{ property.title }}">
+    {% endfor %}
+</div>
+
+{% for video in property.videos %}
+    {% if 'youtube' in video or 'youtu.be' in video %}
+        <iframe width="100%" height="400" src="static/videos/pratical_video.mp4" frameborder="0" allowfullscreen></iframe>
+    {% else %}
+        <video controls><source src="static/videos/pratical_video.mp4" type="video/mp4"></video>
+    {% endif %}
+{% endfor %}
+
     <!-- Toast Notification -->
     <div class="toast" id="toast">Message sent successfully!</div>
 

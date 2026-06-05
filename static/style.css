@@ -61,6 +61,18 @@ nav.scrolled {
     list-style: none;
 }
 
+.video-gallery {
+    display: grid;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.video-gallery video {
+    border-radius: 8px;
+    max-height: 400px;
+    object-fit: cover;
+}
+
 .nav-links a {
     color: #fff;
     text-decoration: none;

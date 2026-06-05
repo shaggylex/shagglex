@@ -17,6 +17,9 @@ properties_db = [
             "static/image/ogudu 1.jpg",
             "static/image/ogudu gra.jpg"
         ],
+        "videos": [ # <-- ADD VIDEO
+            "static/videos/pratical_video.mp4"
+        ],
         "beds": 5,
         "baths": 4,
         "sqft": "4,200",
