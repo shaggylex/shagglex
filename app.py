@@ -187,6 +187,13 @@ def api_property(property_id):
         return jsonify(property)
     return jsonify({"error": "Property not found"}), 404
 
+@app.route('/api/properties-debug')
+def api_properties_debug():
+    try:
+        return jsonify(properties_db)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 @app.route('/api/contact', methods=['POST'])
 def api_contact():
     """API endpoint to handle contact form submissions"""
