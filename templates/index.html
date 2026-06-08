@@ -324,7 +324,7 @@
 
 <script>
 // Store all properties data from Flask
- const properties = JSON.parse('{{ properties | tojson | safe }}');
+const properties = '{{ properties | tojson | safe }}';
 
 function openModal(id) {
     const prop = properties.find(p => p.id === id);
@@ -366,7 +366,6 @@ window.onclick = function(event) {
     }
 }
  
- return `<video controls width="100%">\n<source src="/static/${vid.replace('static/', '')}" type="video/mp4"></video>`;
 </script>
 
     <!-- Toast Notification -->
