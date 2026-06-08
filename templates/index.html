@@ -319,32 +319,53 @@
         </div>
     </div>
 
-    <!-- Video Section -->
-{% if prop.videos %}
-<div class="video-gallery">
-    {% for vid in prop.videos %}
-    <video controls width="100%" poster="{{ prop.images[0] }}">
-        <source src="static/videos/pratical_video.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-    {% endfor %}
-</div>
-{% endif %}
+    <!-- Video Gallery -->
+<div id="modalVideos" class="video-gallery"></div>
 
-<!-- Existing Image Gallery -->
-<div class="image-gallery">
-    {% for image in prop.images %}
-    <img src="static/images/pratical_image.jpg" alt="{{ prop.title }}">
-    {% endfor %}
-</div>
+<script>
+// Store all properties data from Flask
+const properties = {{ properties | tojson }};
 
-{% for video in prop.videos %}
-    {% if 'youtube' in video or 'youtu.be' in video %}
-        <iframe width="100%" height="400" src="{{ video }}" frameborder="0" allowfullscreen></iframe>
-    {% else %}
-        <video controls><source src="{{ video }}" type="video/mp4"></video>
-    {% endif %}
-{% endfor %}
+function openModal(id) {
+    const prop = properties.find(p => p.id === id);
+    if (!prop) return;
+
+    // ... keep your existing code for title, price, images ...
+
+    // FILL VIDEOS
+    const videosDiv = document.getElementById('modalVideos');
+    if (prop.videos && prop.videos.length > 0) {
+        videosDiv.innerHTML = prop.videos.map(vid => {
+            if (vid.includes('youtube') || vid.includes('youtu.be')) {
+                return <iframe width="100%" height="400" src="${vid}" frameborder="0" allowfullscreen></iframe>;
+            } else {
+                return <video controls width="100%"><source src="/static/${vid.replace('static/', '')}" type="video/mp4"></video>;
+            }
+        }).join('');
+        videosDiv.style.display = 'block';
+    } else {
+        videosDiv.innerHTML = '';
+        videosDiv.style.display = 'none';
+    }
+
+    // Show modal
+    document.getElementById('propertyModal').style.display = 'flex';
+}
+
+function closeModal() {
+    document.getElementById('propertyModal').style.display = 'none';
+    // Stop any playing videos
+    document.getElementById('modalVideos').innerHTML = '';
+}
+
+// Close modal when clicking outside
+window.onclick = function(event) {
+    const modal = document.getElementById('propertyModal');
+    if (event.target === modal) {
+        closeModal();
+    }
+}
+</script>
 
     <!-- Toast Notification -->
     <div class="toast" id="toast">Message sent successfully!</div>
