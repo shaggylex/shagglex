@@ -324,7 +324,7 @@
 
 <script>
 // Store all properties data from Flask
-const properties = {{ properties | tojson }};
+ const properties = JSON.parse('{{ properties | tojson | safe }}');
 
 function openModal(id) {
     const prop = properties.find(p => p.id === id);
@@ -337,9 +337,9 @@ function openModal(id) {
     if (prop.videos && prop.videos.length > 0) {
         videosDiv.innerHTML = prop.videos.map(vid => {
             if (vid.includes('youtube') || vid.includes('youtu.be')) {
-                return <iframe width="100%" height="400" src="${vid}" frameborder="0" allowfullscreen></iframe>;
+                return `<iframe width="100%" height="400" src="${vid}" frameborder="0" allowfullscreen></iframe>`;
             } else {
-                return <video controls width="100%"><source src="/static/${vid.replace('static/', '')}" type="video/mp4"></video>;
+                return `<video controls width="100%"><source src="/static/${vid.replace('static/', '')}" type="video/mp4"></video>`;
             }
         }).join('');
         videosDiv.style.display = 'block';
@@ -365,6 +365,8 @@ window.onclick = function(event) {
         closeModal();
     }
 }
+ 
+ return `<video controls width="100%">\n<source src="/static/${vid.replace('static/', '')}" type="video/mp4"></video>`;
 </script>
 
     <!-- Toast Notification -->
