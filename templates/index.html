@@ -115,13 +115,35 @@
   <span class="price">{{property.price}}</span>
 </div>
 
-<video 
-    src="/static/video/mr_femi.mp4"
-    muted          <!-- REQUIRED for autoplay -->
-    loop           <!-- Repeats when done -->
-    playsinline    <!-- Required for mobile/Safari -->
-    autoplay>      <!-- Try to autoplay -->
-</video>
+<div class="property-grid">
+  {% for property in properties %}
+  
+  <div class="property-card">
+    
+    <div class="property-video">
+      <!-- Video INSIDE the container -->
+      <video 
+        src="{{ property.video }}" 
+        muted 
+        loop 
+        playsinline
+        autoplay>
+      </video>
+      
+      <!-- Badge and price INSIDE the container -->
+      <span class="badge">{{ property.badge }}</span>
+      <span class="price">{{ property.price }}</span>
+    </div>
+    
+    <div class="property-info">
+      <h3>{{ property.title }}</h3>
+      <p>{{ property.location }}</p>
+    </div>
+    
+  </div>
+  
+  {% endfor %}
+</div>
 
                 <div class="property-info">
                     <h3>{{ property.title }}</h3>
