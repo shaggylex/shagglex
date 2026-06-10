@@ -197,6 +197,33 @@ function updatePropertyGrid(properties) {
     `).join('');
 }
 
+document.querySelectorAll('.property-video video').forEach(video => {
+  
+  // Play on hover
+  video.addEventListener('mouseenter', () => {
+    video.play().catch(e => console.log('Autoplay blocked'));
+    video.setAttribute('playing', '');
+  });
+  
+  // Pause and reset on mouse leave
+  video.addEventListener('mouseleave', () => {
+    video.pause();
+    video.currentTime = 0;
+    video.removeAttribute('playing');
+  });
+  
+  // Toggle play/pause on click
+  video.addEventListener('click', () => {
+    if (video.paused) {
+      video.play();
+      video.setAttribute('playing', '');
+    } else {
+      video.pause();
+      video.removeAttribute('playing');
+    }
+  });
+});
+
 // Search input handler
 const searchInput = document.getElementById('propertySearch');
 if (searchInput) {

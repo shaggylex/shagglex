@@ -89,14 +89,30 @@
         
         <div class="property-grid">
             {% for property in properties %}
-           
-    <div class="image-scroll">
-        {% for img in property.images %}
-        <img src="{{ img }}" alt="{{ property.title }}">
-        {% endfor %}
-    </div>
-    <h2>{{ property.title }}</h2>
-    <p>{{ property.price }}</p>
+
+            <!-- AFTER (Video) -->
+<div class="property-video">
+  <video 
+    src="{{property.video}}" 
+    poster="{{property.poster}}" 
+    muted 
+    loop 
+    playsinline
+    preload="metadata"
+    onclick="this.play()"
+    onmouseenter="this.play()" 
+    onmouseleave="this.pause(); this.currentTime = 0;">
+  </video>
+  
+  <!-- Play button overlay -->
+  <div class="play-overlay">
+    <svg viewBox="0 0 24 24" fill="white">
+      <path d="M8 5v14l11-7z"/>
+    </svg>
+  </div>
+  
+  <span class="badge">{{property.badge}}</span>
+  <span class="price">{{property.price}}</span>
 </div>
 
                 <div class="property-info">
@@ -318,55 +334,6 @@
             </button>
         </div>
     </div>
-
-    <!-- Video Gallery -->
-<div id="modalVideos" class="video-gallery"></div>
-
-<script>
-// Store all properties data from Flask
-const properties = '{{ properties | tojson | safe }}';
-
-function openModal(id) {
-    const prop = properties.find(p => p.id === id);
-    if (!prop) return;
-
-    // ... keep your existing code for title, price, images ...
-
-    // FILL VIDEOS
-    const videosDiv = document.getElementById('modalVideos');
-    if (prop.videos && prop.videos.length > 0) {
-        videosDiv.innerHTML = prop.videos.map(vid => {
-            if (vid.includes('youtube') || vid.includes('youtu.be')) {
-                return `<iframe width="100%" height="400" src="${vid}" frameborder="0" allowfullscreen></iframe>`;
-            } else {
-                return `<video controls width="100%"><source src="/static/${vid.replace('static/', '')}" type="video/mp4"></video>`;
-            }
-        }).join('');
-        videosDiv.style.display = 'block';
-    } else {
-        videosDiv.innerHTML = '';
-        videosDiv.style.display = 'none';
-    }
-
-    // Show modal
-    document.getElementById('propertyModal').style.display = 'flex';
-}
-
-function closeModal() {
-    document.getElementById('propertyModal').style.display = 'none';
-    // Stop any playing videos
-    document.getElementById('modalVideos').innerHTML = '';
-}
-
-// Close modal when clicking outside
-window.onclick = function(event) {
-    const modal = document.getElementById('propertyModal');
-    if (event.target === modal) {
-        closeModal();
-    }
-}
- 
-</script>
 
     <!-- Toast Notification -->
     <div class="toast" id="toast">Message sent successfully!</div>

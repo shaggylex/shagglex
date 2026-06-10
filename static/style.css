@@ -66,18 +66,80 @@ nav.scrolled {
     margin: 20px 0;
 }
 
-.video-gallery video {
-    width: 100%;
-    border-radius: 8px;
-    max-height: 400px;
-    object-fit: cover;
+.property-video {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #1a1a2e;
+  cursor: pointer;
 }
 
-.video-gallery iframe {
-    border-radius: 8px;
-    width: 100%;
-    height: 400px;
+.property-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
+
+/* Play button overlay */
+.play-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  background: rgba(0,0,0,0.6);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none; /* Let clicks pass through to video */
+  transition: opacity 0.3s;
+}
+
+.play-overlay svg {
+  width: 24px;
+  height: 24px;
+  margin-left: 3px; /* Center the play icon visually */
+}
+
+/* Hide play button when video is playing */
+.property-video video[playing] + .play-overlay,
+.property-video video:hover + .play-overlay {
+  opacity: 0;
+}
+
+/* Badge & Price positioning (same as before) */
+.badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #6366f1;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.price {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(0,0,0,0.8);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  z-index: 2;
+}
+
 .nav-links a {
     color: #fff;
     text-decoration: none;

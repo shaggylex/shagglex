@@ -11,12 +11,6 @@ properties_db = [
         "title": "Modern Luxury Villa",
         "price": "₦850,000",
         "location": "Beverly Hills, CA",
-         "images": [  # <-- Multiple images instead of one icon
-            "static/image/ikoyi.jpg",
-            "static/image/ogudo 2.jpg",
-            "static/image/ogudu 1.jpg",
-            "static/image/ogudu gra.jpg"
-        ],
         "videos": [ # <-- ADD VIDEO
             "static/videos/pratical_video.mp4"
         ],
@@ -32,16 +26,13 @@ properties_db = [
         "title": "Skyline Penthouse",
         "price": "₦400,000,000",
         "location": "Semi Detached, Lagos",
+        "videos": [ # <-- ADD VIDEO
+            ""
+        ],
         "beds": 3,
         "baths": 3,
         "sqft": "2,800",
         "badge": "For Sale",
-        "images": [  # <-- Multiple images instead of one icon
-            "static/image/ikoyi.jpg",
-            "static/image/ogudo 2.jpg",
-            "static/image/ogudu 1.jpg",
-            "static/image/ogudu gra.jpg"
-        ],
         "description": "Exclusive penthouse with 360° skyline views, private elevator, and rooftop terrace.",
         "featured": True
     },
@@ -50,16 +41,13 @@ properties_db = [
         "title": "Oceanfront Estate",
         "price": "₦450,000,000",
         "location": "Miami Beach, FL",
+        "videos": [ # <-- ADD VIDEO
+            ""
+        ],
         "beds": 6,
         "baths": 5,
         "sqft": "5,500",
         "badge": "Premium",
-         "images": [  # <-- Multiple images instead of one icon
-            "static/image/ikoyi.jpg",
-            "static/image/ogudo 2.jpg",
-            "static/image/ogudu 1.jpg",
-            "static/image/ogudu gra.jpg"
-        ],
         "description": "Direct ocean access, private beach, and resort-style amenities in this gated estate.",
         "featured": True
     },
@@ -68,16 +56,13 @@ properties_db = [
         "title": "Urban Downtown Loft",
         "price": "₦3,500/mo",
         "location": "Austin, TX",
+        "videos": [ # <-- ADD VIDEO
+            ""
+        ],
         "beds": 2,
         "baths": 2,
         "sqft": "1,800",
         "badge": "For Rent",
-         "images": [  # <-- Multiple images instead of one icon
-            "static/image/ikoyi.jpg",
-            "static/image/ogudo 2.jpg",
-            "static/image/ogudu 1.jpg",
-            "static/image/ogudu gra.jpg"
-        ],
         "description": "Industrial-chic loft in the heart of downtown with exposed brick and modern finishes.",
         "featured": False
     },
@@ -86,11 +71,8 @@ properties_db = [
         "title": "Alpine Mountain Retreat",
         "price": "₦1,800,000",
         "location": "Aspen, CO",
-         "images": [  # <-- Multiple images instead of one icon
-            "static/image/ikoyi.jpg",
-            "static/image/ogudo 2.jpg",
-            "static/image/ogudu 1.jpg",
-            "static/image/ogudu gra.jpg"
+        "videos": [ # <-- ADD VIDEO
+            ""
         ],
         "beds": 4,
         "baths": 3,
@@ -104,11 +86,8 @@ properties_db = [
         "title": "Family Suburban Home",
         "price": "₦650,000",
         "location": "Naperville, IL",
-         "images": [  # <-- Multiple images instead of one icon
-            "static/image/ikoyi.jpg",
-            "static/image/ogudo 2.jpg",
-            "static/image/ogudu 1.jpg",
-            "static/image/ogudu gra.jpg"
+         "videos": [  # <-- ADD VIDEO
+            ""
         ],
         "beds": 4,
         "baths": 3,
@@ -122,11 +101,8 @@ properties_db = [
         "title": "Alpine Mountain Retreat",
         "price": "₦1,800,000",
         "location": "Aspen, CO",
-         "images": [  # <-- Multiple images instead of one icon
-            "static/image/ikoyi.jpg",
-            "static/image/ogudo 2.jpg",
-            "static/image/ogudu 1.jpg",
-            "static/image/ogudu gra.jpg"
+        "videos": [ # <-- ADD VIDEO
+            ""
         ],
         "beds": 4,
         "baths": 3,
@@ -140,11 +116,8 @@ properties_db = [
         "title": "Alpine Mountain Retreat",
         "price": "₦1,800,000",
         "location": "Aspen, CO",
-         "images": [  # <-- Multiple images instead of one icon
-            "static/image/ikoyi.jpg",
-            "static/image/ogudo 2.jpg",
-            "static/image/ogudu 1.jpg",
-            "static/image/ogudu gra.jpg"
+         "videos": [  # <-- ADD VIDEO
+            ""
         ],
         "beds": 4,
         "baths": 3,
