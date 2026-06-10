@@ -50,9 +50,7 @@ properties_db = [
         "title": "Urban Downtown Loft",
         "price": "₦3,500/mo",
         "location": "Austin, TX",
-        "videos": [ # <-- ADD VIDEO
-            ""
-        ],
+        "videos": "static/video/pratical_video.mp4",
         "beds": 2,
         "baths": 2,
         "sqft": "1,800",
