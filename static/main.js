@@ -224,6 +224,29 @@ document.querySelectorAll('.property-video video').forEach(video => {
   });
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    // Find all video elements
+    const videos = document.querySelectorAll('.property-video video');
+    
+    videos.forEach(video => {
+        // Play when mouse enters the card
+        video.addEventListener('mouseenter', () => {
+            video.play().catch(e => console.log('Autoplay blocked:', e));
+        });
+        
+        // Pause and reset when mouse leaves
+        video.addEventListener('mouseleave', () => {
+            video.pause();
+            video.currentTime = 0;
+        });
+    });
+});
+
+videoElement.muted = true;
+videoElement.autoplay = true;
+videoElement.loop = true;
+videoElement.playsInline = true;
+
 // Search input handler
 const searchInput = document.getElementById('propertySearch');
 if (searchInput) {
