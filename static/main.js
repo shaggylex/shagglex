@@ -242,11 +242,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-videoElement.muted = true;
-videoElement.autoplay = true;
-videoElement.loop = true;
-videoElement.playsInline = true;
-
 // Search input handler
 const searchInput = document.getElementById('propertySearch');
 if (searchInput) {
