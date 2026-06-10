@@ -126,53 +126,40 @@ function handleSubmit(e) {
 
 // ========== VIDEO HANDLER (FIXED - Only ONE handler) ==========
 function initVideos() {
-    document.querySelectorAll('.property-video video').forEach(video => {
-        // Remove old listeners first (prevents duplicates)
-        const newVideo = video.cloneNode(true);
-        video.parentNode.replaceChild(newVideo, video);
-        
-        // Play on hover
-        newVideo.addEventListener('mouseenter', () => {
-            newVideo.play().catch(e => console.log('Play blocked:', e));
-        });
-        
-        // Pause and reset on mouse leave
-        newVideo.addEventListener('mouseleave', () => {
-            newVideo.pause();
-            newVideo.currentTime = 0;
-        });
-    });
-}
-
-function initVideos() {
-    document.querySelectorAll('.property-video').forEach(container => {
-        const video = container.querySelector('video');
-        const playBtn = container.querySelector('.play-button');
-        
-        if (!video) return;
-        
-        // Play on click
-        container.addEventListener('click', () => {
-            if (video.paused) {
-                video.play();
-                container.classList.add('video-playing');
+    const videos = document.querySelectorAll('.property-video video');
+    
+    // Use Intersection Observer to play videos when visible
+    const videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const video = entry.target;
+            
+            if (entry.isIntersecting) {
+                // Video is visible - play it
+                video.play().catch(e => {
+                    console.log('Autoplay blocked:', e);
+                    // Show play button if autoplay fails
+                    video.closest('.property-video').classList.remove('video-playing');
+                });
+                video.closest('.property-video').classList.add('video-playing');
             } else {
+                // Video is not visible - pause and reset
                 video.pause();
-                container.classList.remove('video-playing');
+                video.currentTime = 0;
+                video.closest('.property-video').classList.remove('video-playing');
             }
         });
+    }, {
+        threshold: 0.5  // Play when 50% of video is visible
+    });
+    
+    videos.forEach(video => {
+        video.muted = true;        // REQUIRED for autoplay
+        video.loop = true;         // Loop continuously
+        video.playsInline = true;  // Required for iPhone
+        video.setAttribute('playsinline', ''); // iOS fix
         
-        // Also play on hover
-        container.addEventListener('mouseenter', () => {
-            video.play();
-            container.classList.add('video-playing');
-        });
-        
-        container.addEventListener('mouseleave', () => {
-            video.pause();
-            video.currentTime = 0;
-            container.classList.remove('video-playing');
-        });
+        // Observe each video
+        videoObserver.observe(video);
     });
 }
 

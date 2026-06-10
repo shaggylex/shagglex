@@ -93,19 +93,21 @@
         
         <div class="property-card" onclick="showPropertyDetails('{{ property.title }}', '{{ property.price }}', '{{ property.location }}', '{{ property.description }}')">
             
-            <div class="property-video">
-                <video 
-                    src="{{ property.video }}" 
-                    muted 
-                    playsinline
-                    preload="metadata">
-                </video>
-
-                <div class="play-button"></div>
-
-                <span class="badge">{{ property.badge }}</span>
-                <span class="price">{{ property.price }}</span>
-            </div>
+         <div class="property-video">
+    <video 
+        src="{{ property.video }}" 
+        muted 
+        loop 
+        playsinline
+        preload="metadata">
+    </video>
+    
+    <!-- Optional: Hide play button since it autoplays -->
+    <div class="play-button" style="display: none;"></div>
+    
+    <span class="badge">{{ property.badge }}</span>
+    <span class="price">{{ property.price }}</span>
+</div>
             
             <div class="property-info">
                 <h3>{{ property.title }}</h3>

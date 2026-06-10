@@ -64,7 +64,7 @@ nav.scrolled {
 .property-video {
     position: relative;
     width: 100%;
-    aspect-ratio: 3 / 4;      /* Portrait for phone videos */
+    aspect-ratio: 3 / 4;
     overflow: hidden;
     border-radius: 12px;
     background: #000;
@@ -77,38 +77,8 @@ nav.scrolled {
     display: block;
 }
 
-.play-button {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 60px;
-    height: 60px;
-    background: rgba(0, 0, 0, 0.6);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    pointer-events: none;
-    /* transition: opacity 0.3s ease; */
-    z-index: 3;
-}
-
-.play-button::after {
-    content: '';
-    width: 0;
-    height: 0;
-    border-left: 18px solid white;
-    border-top: 12px solid transparent;
-    border-bottom: 12px solid transparent;
-    margin-left: 4px;
-}
-.property-video:hover .play-button,
-.video-playing .play-button
- { opacity: 0; }
-
-/* Badge */
-.property-video .badge {
+/* Badge & Price */
+.badge {
     position: absolute;
     top: 12px;
     left: 12px;
@@ -118,12 +88,10 @@ nav.scrolled {
     border-radius: 20px;
     font-size: 0.75rem;
     font-weight: 600;
-    text-transform: uppercase;
     z-index: 2;
 }
 
-/* Price */
-.property-video .price {
+.price {
     position: absolute;
     bottom: 12px;
     right: 12px;
@@ -132,7 +100,6 @@ nav.scrolled {
     padding: 8px 16px;
     border-radius: 8px;
     font-weight: 700;
-    font-size: 1.1rem;
     z-index: 2;
 }
 
