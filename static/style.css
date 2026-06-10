@@ -77,6 +77,36 @@ nav.scrolled {
     display: block;
 }
 
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 3;
+}
+
+.play-button::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 18px solid white;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    margin-left: 4px;
+}
+.property-video:hover .play-button,
+.video-playing .play-button
+ { opacity: 0; }
+
 /* Badge */
 .property-video .badge {
     position: absolute;

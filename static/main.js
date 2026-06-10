@@ -144,6 +144,41 @@ function initVideos() {
     });
 }
 
+function initVideos() {
+    document.querySelectorAll('.property-video').forEach(container => {
+        const video = container.querySelector('video');
+        const playBtn = container.querySelector('.play-button');
+        
+        if (!video) return;
+        
+        // Play on click
+        container.addEventListener('click', () => {
+            if (video.paused) {
+                video.play();
+                container.classList.add('video-playing');
+            } else {
+                video.pause();
+                container.classList.remove('video-playing');
+            }
+        });
+        
+        // Also play on hover
+        container.addEventListener('mouseenter', () => {
+            video.play();
+            container.classList.add('video-playing');
+        });
+        
+        container.addEventListener('mouseleave', () => {
+            video.pause();
+            video.currentTime = 0;
+            container.classList.remove('video-playing');
+        });
+    });
+}
+
+// Run on page load
+document.addEventListener('DOMContentLoaded', initVideos);
+
 // ========== PROPERTY GRID (FIXED - Uses VIDEO not icons) ==========
 function updatePropertyGrid(properties) {
     const grid = document.querySelector('.property-grid');
