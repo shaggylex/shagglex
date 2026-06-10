@@ -12,7 +12,7 @@ properties_db = [
         "price": "₦850,000",
         "location": "Beverly Hills, CA",
         "video": [ # <-- ADD VIDEO
-            "static/videos/mr_femi.mp4"
+            "static/video/mr_femi.mp4"
         ],
         "beds": 5,
         "baths": 4,
@@ -26,8 +26,8 @@ properties_db = [
         "title": "Skyline Penthouse",
         "price": "₦400,000,000",
         "location": "Semi Detached, Lagos",
-        "videos": [ # <-- ADD VIDEO
-            "static/videos/ogudo1.mp4"
+        "video": [ # <-- ADD VIDEO
+            "static/video/ogudo1.mp4"
         ],
         "beds": 3,
         "baths": 3,
@@ -42,7 +42,7 @@ properties_db = [
         "price": "₦450,000,000",
         "location": "Miami Beach, FL",
         "videos": [ # <-- ADD VIDEO
-            "static/videos/ogudu2.mp4"
+            "static/video/ogudu2.mp4"
         ],
         "beds": 6,
         "baths": 5,
