@@ -1,4 +1,4 @@
-// Navbar scroll effect
+// ========== NAVBAR ==========
 window.addEventListener('scroll', () => {
     const navbar = document.getElementById('navbar');
     if (window.scrollY > 50) {
@@ -8,44 +8,33 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Smooth scroll for navigation links
+// ========== SMOOTH SCROLL ==========
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
     });
 });
 
-// Intersection Observer for fade-in animations
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
+// ========== FADE-IN ANIMATIONS ==========
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('visible');
     });
-}, observerOptions);
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-// Counter animation
+// ========== COUNTER ANIMATION ==========
 const counterObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             const counter = entry.target;
             const target = parseInt(counter.getAttribute('data-target'));
-            const duration = 2000;
-            const step = target / (duration / 16);
+            const step = target / 125;
             let current = 0;
 
             const updateCounter = () => {
@@ -57,34 +46,30 @@ const counterObserver = new IntersectionObserver((entries) => {
                     counter.textContent = target + '+';
                 }
             };
-
             updateCounter();
             counterObserver.unobserve(counter);
         }
     });
 }, { threshold: 0.5 });
 
-document.querySelectorAll('.counter').forEach(counter => counterObserver.observe(counter));
+document.querySelectorAll('.counter').forEach(c => counterObserver.observe(c));
 
-// Particle animation
+// ========== PARTICLES ==========
 function createParticles() {
     const container = document.getElementById('particles');
     if (!container) return;
-    const particleCount = 30;
-
-    for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        particle.style.left = Math.random() * 100 + '%';
-        particle.style.animationDelay = Math.random() * 15 + 's';
-        particle.style.animationDuration = (10 + Math.random() * 10) + 's';
-        container.appendChild(particle);
+    for (let i = 0; i < 30; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        p.style.left = Math.random() * 100 + '%';
+        p.style.animationDelay = Math.random() * 15 + 's';
+        p.style.animationDuration = (10 + Math.random() * 10) + 's';
+        container.appendChild(p);
     }
 }
-
 createParticles();
 
-// Property modal
+// ========== MODAL ==========
 function showPropertyDetails(title, price, location, description = '') {
     document.getElementById('modalTitle').textContent = title;
     document.getElementById('modalPrice').textContent = price;
@@ -101,17 +86,13 @@ function closeModal() {
     document.body.style.overflow = 'auto';
 }
 
-// Close modal on outside click
 document.getElementById('propertyModal').addEventListener('click', (e) => {
-    if (e.target === document.getElementById('propertyModal')) {
-        closeModal();
-    }
+    if (e.target === document.getElementById('propertyModal')) closeModal();
 });
 
-// Contact form submission - NOW CONNECTS TO PYTHON BACKEND
+// ========== CONTACT FORM ==========
 function handleSubmit(e) {
     e.preventDefault();
-    
     const formData = {
         first_name: document.querySelector('input[placeholder="John"]').value,
         last_name: document.querySelector('input[placeholder="Doe"]').value,
@@ -120,163 +101,132 @@ function handleSubmit(e) {
         interest: document.querySelector('select').value,
         message: document.querySelector('textarea').value
     };
-    
-    // Send to Python Flask backend
+
     fetch('/api/contact', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
     })
-    .then(response => response.json())
+    .then(r => r.json())
     .then(data => {
         const toast = document.getElementById('toast');
         toast.textContent = data.message || 'Message sent successfully!';
         toast.classList.add('show');
         document.getElementById('contactForm').reset();
-        
-        setTimeout(() => {
-            toast.classList.remove('show');
-        }, 3000);
+        setTimeout(() => toast.classList.remove('show'), 3000);
     })
-    .catch(error => {
-        console.error('Error:', error);
+    .catch(err => {
+        console.error('Error:', err);
         const toast = document.getElementById('toast');
         toast.textContent = 'Error sending message. Please try again.';
         toast.classList.add('show');
-        setTimeout(() => {
-            toast.classList.remove('show');
-        }, 3000);
+        setTimeout(() => toast.classList.remove('show'), 3000);
     });
 }
 
-// Property search functionality
-function searchProperties(query) {
-    fetch(`/api/search?q=${encodeURIComponent(query)}`  )
-        .then(response => response.json())
-        .then(properties => {
-            updatePropertyGrid(properties);
-        })
-        .catch(error => console.error('Search error:', error));
+// ========== VIDEO HANDLER (FIXED - Only ONE handler) ==========
+function initVideos() {
+    document.querySelectorAll('.property-video video').forEach(video => {
+        // Remove old listeners first (prevents duplicates)
+        const newVideo = video.cloneNode(true);
+        video.parentNode.replaceChild(newVideo, video);
+        
+        // Play on hover
+        newVideo.addEventListener('mouseenter', () => {
+            newVideo.play().catch(e => console.log('Play blocked:', e));
+        });
+        
+        // Pause and reset on mouse leave
+        newVideo.addEventListener('mouseleave', () => {
+            newVideo.pause();
+            newVideo.currentTime = 0;
+        });
+    });
 }
 
+// ========== PROPERTY GRID (FIXED - Uses VIDEO not icons) ==========
 function updatePropertyGrid(properties) {
     const grid = document.querySelector('.property-grid');
     if (!grid) return;
-    
+
     grid.innerHTML = properties.map(p => `
-        <div class="property-card fade-in visible" onclick="showPropertyDetails('${p.title}', '${p.price}', '${p.location}', '${p.description}')">
-            <div class="property-image">
-                <i class="fas ${p.icon}"></i>
+        <div class="property-card fade-in visible" 
+             onclick="showPropertyDetails('${p.title}', '${p.price}', '${p.location}', '${p.description || ''}')">
+            <div class="property-video">
+                <video 
+                    src="${p.video}" 
+                    muted 
+                    playsinline
+                    preload="metadata"
+                    poster="${p.poster || ''}">
+                </video>
                 <span class="property-badge">${p.badge}</span>
                 <span class="property-price">${p.price}</span>
             </div>
             <div class="property-info">
                 <h3>${p.title}</h3>
                 <div class="property-location">
-                    <i class="fas fa-map-marker-alt"></i>
-                    ${p.location}
+                    <i class="fas fa-map-marker-alt"></i> ${p.location}
                 </div>
                 <div class="property-features">
-                    <div class="feature">
-                        <i class="fas fa-bed"></i>
-                        <span>${p.beds} Beds</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-bath"></i>
-                        <span>${p.baths} Baths</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-ruler-combined"></i>
-                        <span>${p.sqft} sqft</span>
-                    </div>
+                    <div class="feature"><i class="fas fa-bed"></i> <span>${p.beds} Beds</span></div>
+                    <div class="feature"><i class="fas fa-bath"></i> <span>${p.baths} Baths</span></div>
+                    <div class="feature"><i class="fas fa-ruler-combined"></i> <span>${p.sqft} sqft</span></div>
                 </div>
             </div>
         </div>
     `).join('');
+    
+    // Re-initialize video handlers after grid update
+    initVideos();
 }
 
-document.querySelectorAll('.property-video video').forEach(video => {
-  
-  // Play on hover
-  video.addEventListener('mouseenter', () => {
-    video.play().catch(e => console.log('Autoplay blocked'));
-    video.setAttribute('playing', '');
-  });
-  
-  // Pause and reset on mouse leave
-  video.addEventListener('mouseleave', () => {
-    video.pause();
-    video.currentTime = 0;
-    video.removeAttribute('playing');
-  });
-  
-  // Toggle play/pause on click
-  video.addEventListener('click', () => {
-    if (video.paused) {
-      video.play();
-      video.setAttribute('playing', '');
-    } else {
-      video.pause();
-      video.removeAttribute('playing');
-    }
-  });
-});
+// ========== SEARCH ==========
+function searchProperties(query) {
+    fetch(`/api/search?q=${encodeURIComponent(query)}`)
+        .then(r => r.json())
+        .then(properties => updatePropertyGrid(properties))
+        .catch(error => console.error('Search error:', error));
+}
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Find all video elements
-    const videos = document.querySelectorAll('.property-video video');
-    
-    videos.forEach(video => {
-        // Play when mouse enters the card
-        video.addEventListener('mouseenter', () => {
-            video.play().catch(e => console.log('Autoplay blocked:', e));
-        });
-        
-        // Pause and reset when mouse leaves
-        video.addEventListener('mouseleave', () => {
-            video.pause();
-            video.currentTime = 0;
-        });
-    });
-});
-
-// Search input handler
 const searchInput = document.getElementById('propertySearch');
 if (searchInput) {
     let searchTimeout;
     searchInput.addEventListener('input', (e) => {
         clearTimeout(searchTimeout);
-        searchTimeout = setTimeout(() => {
-            searchProperties(e.target.value);
-        }, 300);
+        searchTimeout = setTimeout(() => searchProperties(e.target.value), 300);
     });
 }
 
-// Mobile menu toggle
+// ========== MOBILE MENU ==========
 function toggleMobileMenu() {
     const nav = document.querySelector('.nav-links');
-    nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
-    nav.style.position = 'absolute';
-    nav.style.top = '100%';
-    nav.style.left = '0';
-    nav.style.right = '0';
-    nav.style.flexDirection = 'column';
-    nav.style.background = 'rgba(5, 5, 5, 0.98)';
-    nav.style.padding = '2rem';
-    nav.style.gap = '1.5rem';
+    const isOpen = nav.style.display === 'flex';
+    nav.style.display = isOpen ? 'none' : 'flex';
+    if (!isOpen) {
+        nav.style.position = 'absolute';
+        nav.style.top = '100%';
+        nav.style.left = '0';
+        nav.style.right = '0';
+        nav.style.flexDirection = 'column';
+        nav.style.background = 'rgba(5, 5, 5, 0.98)';
+        nav.style.padding = '2rem';
+        nav.style.gap = '1.5rem';
+    }
 }
 
-// Dynamic property loading from API
+// ========== LOAD PROPERTIES ON START ==========
 function loadAllProperties() {
     fetch('/api/properties')
-        .then(response => response.json())
+        .then(r => r.json())
         .then(properties => {
             console.log('Loaded properties:', properties);
+            updatePropertyGrid(properties);
         })
         .catch(error => console.error('Error loading properties:', error));
 }
 
-// Load properties on page load
-document.addEventListener('DOMContentLoaded', loadAllProperties);
+document.addEventListener('DOMContentLoaded', () => {
+    loadAllProperties();
+    initVideos(); // Also init for any static videos on page
+});

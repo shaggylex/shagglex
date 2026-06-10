@@ -71,105 +71,66 @@
         </div>
     </section>
 
-    <!-- Properties Section -->
-    <section class="properties" id="properties">
-        <div class="section-header fade-in">
-            <h2>Featured Properties</h2>
-            <div class="accent-line"></div>
-            <p>Handpicked premium properties available for sale and rent</p>
-        </div>
-        
-        <!-- Search Bar -->
-        <div class="search-container">
-            <input type="text" id="propertySearch" placeholder="Search properties by name or location...">
-            <button class="btn btn-primary" onclick="searchProperties(document.getElementById('propertySearch').value)">
-                <i class="fas fa-search"></i> Search
-            </button>
-        </div>
-        
-        <div class="property-grid">
-            {% for property in properties %}
-
-            <!-- AFTER (Video) -->
-<div class="property-video">
-  <video 
-    src="{{property.video}}" 
-    poster="{{property.poster}}" 
-    muted 
-    loop 
-    playsinline
-    preload="metadata"
-    onclick="this.play()"
-    onmouseenter="this.play()" 
-    onmouseleave="this.pause(); this.currentTime = 0;">
-  </video>
-  
-  <!-- Play button overlay -->
-  <div class="play-overlay">
-    <svg viewBox="0 0 24 24" fill="white">
-      <path d="M8 5v14l11-7z"/>
-    </svg>
-  </div>
-  
-  <span class="badge">{{property.badge}}</span>
-  <span class="price">{{property.price}}</span>
-</div>
-
-<div class="property-grid">
-  {% for property in properties %}
-  
-  <div class="property-card">
-    
-    <div class="property-video">
-      <!-- Video INSIDE the container -->
-      <video 
-        src="{{ property.video }}" 
-        muted 
-        loop 
-        playsinline
-        autoplay>
-      </video>
-      
-      <!-- Badge and price INSIDE the container -->
-      <span class="badge">{{ property.badge }}</span>
-      <span class="price">{{ property.price }}</span>
+   <!-- Properties Section -->
+<section class="properties" id="properties">
+    <div class="section-header fade-in">
+        <h2>Featured Properties</h2>
+        <div class="accent-line"></div>
+        <p>Handpicked premium properties available for sale and rent</p>
     </div>
     
-    <div class="property-info">
-      <h3>{{ property.title }}</h3>
-      <p>{{ property.location }}</p>
+    <!-- Search Bar -->
+    <div class="search-container">
+        <input type="text" id="propertySearch" placeholder="Search properties by name or location...">
+        <button class="btn btn-primary" onclick="searchProperties(document.getElementById('propertySearch').value)">
+            <i class="fas fa-search"></i> Search
+        </button>
     </div>
     
-  </div>
-  
-  {% endfor %}
-</div>
-
-                <div class="property-info">
-                    <h3>{{ property.title }}</h3>
-                    <div class="property-location">
-                        <i class="fas fa-map-marker-alt"></i>
-                        {{ property.location }}
+    <!-- Property Grid - ONLY ONE -->
+    <div class="property-grid">
+        {% for property in properties %}
+        
+        <div class="property-card" onclick="showPropertyDetails('{{ property.title }}', '{{ property.price }}', '{{ property.location }}', '{{ property.description }}')">
+            
+            <div class="property-video">
+                <video 
+                    src="{{ property.video }}" 
+                    muted 
+                    playsinline
+                    preload="metadata">
+                </video>
+                
+                <span class="badge">{{ property.badge }}</span>
+                <span class="price">{{ property.price }}</span>
+            </div>
+            
+            <div class="property-info">
+                <h3>{{ property.title }}</h3>
+                <div class="property-location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    {{ property.location }}
+                </div>
+                <div class="property-features">
+                    <div class="feature">
+                        <i class="fas fa-bed"></i>
+                        <span>{{ property.beds }} Beds</span>
                     </div>
-                    <div class="property-features">
-                        <div class="feature">
-                            <i class="fas fa-bed"></i>
-                            <span>{{ property.beds }} Beds</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-bath"></i>
-                            <span>{{ property.baths }} Baths</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-ruler-combined"></i>
-                            <span>{{ property.sqft }} sqft</span>
-                        </div>
+                    <div class="feature">
+                        <i class="fas fa-bath"></i>
+                        <span>{{ property.baths }} Baths</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-ruler-combined"></i>
+                        <span>{{ property.sqft }} sqft</span>
                     </div>
                 </div>
             </div>
-            {% endfor %}
         </div>
-    </section>
+        
+        {% endfor %}
+    </div>
+</section>
 
     <!-- Services Section -->
     <section class="services" id="services">
