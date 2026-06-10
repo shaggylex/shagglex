@@ -11,9 +11,7 @@ properties_db = [
         "title": "Modern Luxury Villa",
         "price": "₦850,000",
         "location": "Beverly Hills, CA",
-        "video": [ # <-- ADD VIDEO
-            "static/video/mr_femi.mp4"
-        ],
+        "video": ["static/video/mr_femi.mp4"], # <-- ADD VIDEO
         "beds": 5,
         "baths": 4,
         "sqft": "4,200",
@@ -26,9 +24,7 @@ properties_db = [
         "title": "Skyline Penthouse",
         "price": "₦400,000,000",
         "location": "Semi Detached, Lagos",
-        "video": [ # <-- ADD VIDEO
-            "static/video/ogudo1.mp4"
-        ],
+        "video": ["static/video/ogudo1.mp4"], # <-- ADD VIDEO
         "beds": 3,
         "baths": 3,
         "sqft": "2,800",
@@ -41,9 +37,7 @@ properties_db = [
         "title": "Oceanfront Estate",
         "price": "₦450,000,000",
         "location": "Miami Beach, FL",
-        "videos": [ # <-- ADD VIDEO
-            "static/video/ogudu2.mp4"
-        ],
+        "video": ["static/video/ogudu2.mp4"], # <-- ADD VIDEO
         "beds": 6,
         "baths": 5,
         "sqft": "5,500",
