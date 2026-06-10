@@ -90,7 +90,7 @@ nav.scrolled {
     align-items: center;
     justify-content: center;
     pointer-events: none;
-    transition: opacity 0.3s ease;
+    /* transition: opacity 0.3s ease; */
     z-index: 3;
 }
 
