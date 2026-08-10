@@ -760,28 +760,26 @@ footer {
 .footer-links a:hover { color: var(--primary-light); }
 
 .tiktok-btn {
-    display: inline-block;
+    display: block;
     background: #000000;
-    color: #fff;
-    padding: 8px 16px;
-    border-radius: 4px;
+    color: #ffffff;
+    padding: 12px 20px;
+    border-radius: 8px;
     font-weight: bold;
-    transition: all 0.2s;
-    border: 1px solid #fe2c55;
+    transition: all 0.3s;
+    border: 2px solid #fe2c55;
     text-decoration: none;
-    margin: 10px 15px 15px 15px;
+    margin: 15px;
     text-align: center;
-    position: relative;
-    z-index: 10;
 }
 
 .tiktok-btn:hover {
     background: #fe2c55;
-    transform: scale(1.02);
+    transform: scale(1.05);
 }
 
 .tiktok-btn i {
-    margin-right: 5px;
+    margin-right: 8px;
 }
 
 .social-links {
