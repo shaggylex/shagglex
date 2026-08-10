@@ -92,61 +92,22 @@
 {% for property in properties %}
 <div class="property-card">
     
-    <!-- TikTok Video Embed -->
-    {% if property.tiktok %}
-    <div class="tiktok-embed-container">
-        <blockquote class="tiktok-embed" 
-            cite="{{ property.tiktok }}"
-            data-video-id="{{ property.tiktok.split('/')[-1] }}"
-            style="max-width: 100%; min-width: 100%;">
-            <section></section>
-        </blockquote>
-    </div>
-    {% else %}
-    <!-- Fallback Image if no TikTok -->
-    <div class="property-image">
-        {% if property.images and property.images|length > 0 %}
-            <img src="{{ url_for('static', filename=property.images[0].replace('static/', '')) }}" alt="{{ property.title }}">
-        {% else %}
-            <img src="{{ url_for('static', filename='image/shaggylex logo.png') }}" alt="{{ property.title }}">
-        {% endif %}
-        <span class="badge">{{ property.badge }}</span>
-        <span class="price">{{ property.price }}</span>
-    </div>
-    {% endif %}
-    
-    <!-- Property Info -->
-    <div class="property-info">
-        <h3>{{ property.title }}</h3>
-        <div class="property-location">
-            <i class="fas fa-map-marker-alt"></i>
-            {{ property.location }}
-        </div>
-        <div class="property-features">
-            <div class="feature">
-                <i class="fas fa-bed"></i>
-                <span>{{ property.beds }} Beds</span>
-            </div>
-            <div class="feature">
-                <i class="fas fa-bath"></i>
-                <span>{{ property.baths }} Baths</span>
-            </div>
-            <div class="feature">
-                <i class="fas fa-ruler-combined"></i>
-                <span>{{ property.sqft }} sqft</span>
-            </div>
-        </div>
-    </div>
-    
-    <!-- TikTok Link Button -->
-    {% if property.tiktok %}
-    <a href="{{ property.tiktok }}" target="_blank" class="tiktok-btn">
-        <i class="fab fa-tiktok"></i> Watch Full Video on TikTok
+    <!-- Image that links to TikTok -->
+    <a href="{{ property.tiktok }}" target="_blank">
+        <img src="{{ url_for('static', filename=property.images[0].replace('static/', '')) }}" 
+             alt="{{ property.title }}" 
+             style="width:100%; border-radius:8px;">
     </a>
-    {% endif %}
+    
+    <!-- Info -->
+    <h3>{{ property.title }}</h3>
+    <p>{{ property.price }}</p>
+    <p>{{ property.location }}</p>
     
 </div>
 {% endfor %}
+
+
 
 <!-- TikTok Embed Script (add once at bottom of page, before </body>) -->
 <script async src="https://www.tiktok.com/embed.js"></script>
