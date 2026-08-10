@@ -759,19 +759,6 @@ footer {
 
 .footer-links a:hover { color: var(--primary-light); }
 
-.tiktok-embed-container {
-    width: 100%;
-    min-height: 500px;
-    background: #000;
-    border-radius: 8px 8px 0 0;
-    overflow: hidden;
-}
-
-.tiktok-embed-container iframe {
-    width: 100% !important;
-    height: 100% !important;
-    border: none;
-}
 
 .tiktok-btn {
     display: block;
