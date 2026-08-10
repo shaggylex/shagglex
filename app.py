@@ -14,7 +14,7 @@ properties_db = [
         "images": [
             "image/villa1.jpg"
         ],
-        "tiktok": "https://www.tiktok.com/@shaggylexproperty/video/7670497515917020437?is_from_webapp=1&sender_device=pc",
+        "tiktok": "https://www.tiktok.com/@shaggylexproperty/video/7563959985529523474?is_from_webapp=1&sender_device=pc&web_id=7567663620428563985",
         "beds": 5,
         "baths": 4,
         "sqft": "4,200",
@@ -110,7 +110,7 @@ properties_db = [
          "images": [
             "image/mountain1.jpg"
         ],
-        "tiktok": "",
+        "tiktok": "https://www.tiktok.com/@shaggylexproperty/video/7643429980919041301?is_from_webapp=1&sender_device=pc",
         "beds": 4,
         "baths": 3,
         "sqft": "3,600",
