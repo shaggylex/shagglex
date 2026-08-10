@@ -1,4 +1,4 @@
- '''<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,15 +6,15 @@
     <title>Shaggy Lex Property Company | Premium Real Estate</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="static/style.css">
-       <link rel="shortcut icon" href="static/image/shaggylex logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='image/shaggylex logo.png') }}" type="image/x-icon">
 </head>
 <body>
 
     <!-- Navigation -->
     <nav id="navbar">
         <div class="logo-container">
-            <img src="static/image/shaggylex logo.png" alt="Shaggy Lex Property Company">
+            <img src="{{ url_for('static', filename='image/shaggylex logo.png') }}" alt="Shaggy Lex Property Company">
         </div>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
@@ -33,7 +33,7 @@
         <div class="hero-bg"></div>
         <div class="hero-particles" id="particles"></div>
         <div class="hero-content">
-            <img src="static/image/shaggylex logo.png" alt="Shaggy Lex Property Company" class="hero-logo">
+            <img src="{{ url_for('static', filename='image/shaggylex logo.png') }}" alt="Shaggy Lex Property Company" class="hero-logo">
             <h1>Find Your Dream Property</h1>
             <p class="hero-subtitle">Premium Real Estate Solutions</p>
             <p class="hero-description">
@@ -71,70 +71,66 @@
         </div>
     </section>
 
-   <!-- Properties Section -->
-<section class="properties" id="properties">
-    <div class="section-header fade-in">
-        <h2>Featured Properties</h2>
-        <div class="accent-line"></div>
-        <p>Handpicked premium properties available for sale and rent</p>
-    </div>
-    
-    <!-- Search Bar -->
-    <div class="search-container">
-        <input type="text" id="propertySearch" placeholder="Search properties by name or location...">
-        <button class="btn btn-primary" onclick="searchProperties(document.getElementById('propertySearch').value)">
-            <i class="fas fa-search"></i> Search
-        </button>
-    </div>
-    
-    <!-- Property Grid - ONLY ONE -->
-    <div class="property-grid">
-        {% for property in properties %}
+    <!-- Properties Section -->
+    <section class="properties" id="properties">
+        <div class="section-header fade-in">
+            <h2>Featured Properties</h2>
+            <div class="accent-line"></div>
+            <p>Handpicked premium properties available for sale and rent</p>
+        </div>
         
-        <div class="property-card" onclick="showPropertyDetails('{{ property.title }}', '{{ property.price }}', '{{ property.location }}', '{{ property.description }}')">
-            
-         <div class="property-video">
-    <video 
-        src="{{ property.video }}" 
-        muted 
-        loop 
-        playsinline
-        preload="metadata">
-    </video>
-    
-    <!-- Optional: Hide play button since it autoplays -->
-    <div class="play-button" style="display: none;"></div>
-    
-    <span class="badge">{{ property.badge }}</span>
-    <span class="price">{{ property.price }}</span>
-</div>
-            
-            <div class="property-info">
-                <h3>{{ property.title }}</h3>
-                <div class="property-location">
-                    <i class="fas fa-map-marker-alt"></i>
-                    {{ property.location }}
+        <!-- Search Bar -->
+        <div class="search-container">
+            <input type="text" id="propertySearch" placeholder="Search properties by name or location...">
+            <button class="btn btn-primary" onclick="searchProperties(document.getElementById('propertySearch').value)">
+                <i class="fas fa-search"></i> Search
+            </button>
+        </div>
+        
+        <!-- Property Grid -->
+        <div class="property-grid">
+            {% for property in properties %}
+            <div class="property-card" onclick="showPropertyDetails('{{ property.title }}', '{{ property.price }}', '{{ property.location }}', '{{ property.description }}')">
+                
+                <!-- Property Image -->
+                <div class="property-image">
+                    <img src="{{ url_for('static', filename=property.images[0].replace('static/', '')) }}" alt="{{ property.title }}">
+                    <span class="badge">{{ property.badge }}</span>
+                    <span class="price">{{ property.price }}</span>
                 </div>
-                <div class="property-features">
-                    <div class="feature">
-                        <i class="fas fa-bed"></i>
-                        <span>{{ property.beds }} Beds</span>
+                
+                <!-- TikTok Link (if available) -->
+                {% if property.tiktok %}
+                <a href="{{ property.tiktok }}" target="_blank" class="tiktok-btn" onclick="event.stopPropagation();">
+                    <i class="fab fa-tiktok"></i> View on TikTok
+                </a>
+                {% endif %}
+                
+                <div class="property-info">
+                    <h3>{{ property.title }}</h3>
+                    <div class="property-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        {{ property.location }}
                     </div>
-                    <div class="feature">
-                        <i class="fas fa-bath"></i>
-                        <span>{{ property.baths }} Baths</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-ruler-combined"></i>
-                        <span>{{ property.sqft }} sqft</span>
+                    <div class="property-features">
+                        <div class="feature">
+                            <i class="fas fa-bed"></i>
+                            <span>{{ property.beds }} Beds</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-bath"></i>
+                            <span>{{ property.baths }} Baths</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-ruler-combined"></i>
+                            <span>{{ property.sqft }} sqft</span>
+                        </div>
                     </div>
                 </div>
             </div>
+            {% endfor %}
         </div>
-        
-        {% endfor %}
-    </div>
-</section>
+    </section>
 
     <!-- Services Section -->
     <section class="services" id="services">
@@ -167,7 +163,7 @@
             <div class="service-card fade-in">
                 <div class="service-icon"><i class="fas fa-camera"></i></div>
                 <h3>Property Marketing</h3>
-                <p>High-impact marketing strategies including virtual tours, professional photography, and targeted campaigns.
+                <p>High-impact marketing strategies including virtual tours, professional photography, and targeted campaigns.</p>
             </div>
             <div class="service-card fade-in">
                 <div class="service-icon"><i class="fas fa-handshake"></i></div>
@@ -181,7 +177,7 @@
     <section class="about" id="about">
         <div class="about-content">
             <div class="about-image fade-in">
-                <img src="" alt="Shaggy Lex Property Company">
+                <img src="{{ url_for('static', filename='image/shaggylex logo.png') }}" alt="Shaggy Lex Property Company">
             </div>
             <div class="about-text fade-in">
                 <h2>About Shaggy Lex Property Company</h2>
@@ -268,31 +264,11 @@
         </div>
     </section>
 
-    <div class="property-card">
-    <img src="{{ url_for('static', filename=prop.images[0].replace('static/', '')) }}" alt="{{ prop.title }}">
-    
-    <div class="card-info">
-        <h3>{{ prop.title }}</h3>
-        <p class="price">{{ prop.price }}</p>
-        <p class="location">{{ prop.location }}</p>
-        
-        <!-- Instagram Link Button -->
-        {% if prop.instagram %}
-        <a href="{{ prop.instagram }}" target="_blank" class="instagram-btn">
-            📷 View on Instagram
-        </a>
-        {% endif %}
-        
-        <span class="badge">{{ prop.badge }}</span>
-    </div>
-</div>
-
-
     <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-brand">
-                <img src="static/image/shaggylex logo.png" alt="Shaggy Lex Property Company">
+                <img src="{{ url_for('static', filename='image/shaggylex logo.png') }}" alt="Shaggy Lex Property Company">
                 <p>Your trusted partner in premium real estate. We turn property dreams into reality with expertise, integrity, and exceptional service.</p>
                 <div class="social-links">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -353,21 +329,20 @@
     <!-- Toast Notification -->
     <div class="toast" id="toast">Message sent successfully!</div>
 
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/6a2a6f338705f01c3509a538/default';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/6a2a6f338705f01c3509a538/default';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
 
-    <script src="static/main.js"></script>
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
 </body>
 </html>
-
