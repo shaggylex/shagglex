@@ -43,7 +43,10 @@ properties_db = [
         "title": "Oceanfront Estate",
         "price": "₦450,000,000",
         "location": "Miami Beach, FL",
-        
+        "images": [
+            "image/estate1.jpg"
+        ],
+        "tiktok": "https://www.tiktok.com/@shaggylexproperty/video/7656940062935977237?is_from_webapp=1&sender_device=pc",
         "beds": 6,
         "baths": 5,
         "sqft": "5,500",
@@ -56,7 +59,10 @@ properties_db = [
         "title": "Urban Downtown Loft",
         "price": "₦3,500/mo",
         "location": "Austin, TX",
-        
+        "images": [
+            "image/loft1.jpg"
+        ],
+        "tiktok": "https://www.tiktok.com/@shaggylexproperty/video/7631515055208697109?is_from_webapp=1&sender_device=pc",
         "beds": 2,
         "baths": 2,
         "sqft": "1,800",
@@ -69,9 +75,10 @@ properties_db = [
         "title": "Alpine Mountain Retreat",
         "price": "₦1,800,000",
         "location": "Aspen, CO",
-        "videos": [ # <-- ADD VIDEO
-            ""
+        "images": [
+            "image/mountain1.jpg"
         ],
+        "tiktok": "https://www.tiktok.com/@shaggylexproperty/photo/7665040088803462420?is_from_webapp=1&sender_device=pc&web_id=7567663620428563985",
         "beds": 4,
         "baths": 3,
         "sqft": "3,600",
@@ -84,9 +91,10 @@ properties_db = [
         "title": "Family Suburban Home",
         "price": "₦650,000",
         "location": "Naperville, IL",
-         "videos": [  # <-- ADD VIDEO
-            ""
+        "images": [
+            "image/familyhome1.jpg"
         ],
+        "tiktok": "https://www.tiktok.com/@shaggylexproperty/video/7657117696764431636?is_from_webapp=1&sender_device=pc&web_id=7567663620428563985",
         "beds": 4,
         "baths": 3,
         "sqft": "2,900",
@@ -99,9 +107,10 @@ properties_db = [
         "title": "Alpine Mountain Retreat",
         "price": "₦1,800,000",
         "location": "Aspen, CO",
-        "videos": [ # <-- ADD VIDEO
-            ""
+         "images": [
+            "image/mountain1.jpg"
         ],
+        "tiktok": "",
         "beds": 4,
         "baths": 3,
         "sqft": "3,600",
@@ -114,9 +123,10 @@ properties_db = [
         "title": "Alpine Mountain Retreat",
         "price": "₦1,800,000",
         "location": "Aspen, CO",
-         "videos": [  # <-- ADD VIDEO
-            ""
+         "images": [
+            "image/mountain1.jpg"
         ],
+        "tiktok": "",
         "beds": 4,
         "baths": 3,
         "sqft": "3,600",
