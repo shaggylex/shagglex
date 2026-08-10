@@ -777,13 +777,13 @@ footer {
     display: block;
     background: #000000;
     color: #ffffff;
-    padding: 12px 20px;
+    padding: 12px;
     border-radius: 0 0 8px 8px;
     font-weight: bold;
-    transition: all 0.3s;
     border: 2px solid #fe2c55;
     text-decoration: none;
     text-align: center;
+    margin-top: -5px;
 }
 
 .tiktok-btn:hover {
