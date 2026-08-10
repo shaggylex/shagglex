@@ -92,7 +92,18 @@
 {% for property in properties %}
 <div class="property-card">
     
-    <!-- Property Image (no click) -->
+    <!-- TikTok Video Embed -->
+    {% if property.tiktok %}
+    <div class="tiktok-embed-container">
+        <blockquote class="tiktok-embed" 
+            cite="{{ property.tiktok }}"
+            data-video-id="{{ property.tiktok.split('/')[-1] }}"
+            style="max-width: 100%; min-width: 100%;">
+            <section></section>
+        </blockquote>
+    </div>
+    {% else %}
+    <!-- Fallback Image if no TikTok -->
     <div class="property-image">
         {% if property.images and property.images|length > 0 %}
             <img src="{{ url_for('static', filename=property.images[0].replace('static/', '')) }}" alt="{{ property.title }}">
@@ -102,6 +113,7 @@
         <span class="badge">{{ property.badge }}</span>
         <span class="price">{{ property.price }}</span>
     </div>
+    {% endif %}
     
     <!-- Property Info -->
     <div class="property-info">
@@ -126,15 +138,18 @@
         </div>
     </div>
     
-    <!-- TikTok Link (Main Action) -->
+    <!-- TikTok Link Button -->
     {% if property.tiktok %}
     <a href="{{ property.tiktok }}" target="_blank" class="tiktok-btn">
-        <i class="fab fa-tiktok"></i> View on TikTok
+        <i class="fab fa-tiktok"></i> Watch Full Video on TikTok
     </a>
     {% endif %}
     
 </div>
 {% endfor %}
+
+<!-- TikTok Embed Script (add once at bottom of page, before </body>) -->
+<script async src="https://www.tiktok.com/embed.js"></script>
         </div>
     </section>
 
