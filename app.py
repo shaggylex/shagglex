@@ -218,12 +218,6 @@ def delete_contact(contact_id):
     contacts_db = [c for c in contacts_db if c['id'] != contact_id]
     return redirect(url_for('admin_dashboard'))
 
-@app.route('/debug')
-def debug():
-    for p in properties_db:
-        if 'images' not in p:
-            return f"Property {p.get('id', '?')} - {p.get('title', '?')} is missing 'images'"
-    return "All properties have images!"
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
