@@ -89,48 +89,53 @@
         
         <!-- Property Grid -->
         <div class="property-grid">
-            {% for property in properties %}
-           <div class="property-card" onclick="showPropertyDetails('{{ property.title }}', '{{ property.price }}', '{{ property.location }}', '{{ property.description }}')">
+{% for property in properties %}
+<div class="property-card">
     
-    <!-- Property Image (with fallback) -->
-    <div class="property-image">
-        {% if property.images and property.images|length > 0 %}
-            <img src="{{ url_for('static', filename=property.images[0].replace('static/', '')) }}" alt="{{ property.title }}">
-        {% else %}
-            <img src="{{ url_for('static', filename='image/shaggylex logo.png') }}" alt="{{ property.title }}">
-        {% endif %}
-        <span class="badge">{{ property.badge }}</span>
-        <span class="price">{{ property.price }}</span>
+    <!-- Clickable area for modal -->
+    <div class="card-main" onclick="showPropertyDetails('{{ property.title }}', '{{ property.price }}', '{{ property.location }}', '{{ property.description }}')">
+        
+        <!-- Property Image -->
+        <div class="property-image">
+            {% if property.images and property.images|length > 0 %}
+                <img src="{{ url_for('static', filename=property.images[0].replace('static/', '')) }}" alt="{{ property.title }}">
+            {% else %}
+                <img src="{{ url_for('static', filename='image/shaggylex logo.png') }}" alt="{{ property.title }}">
+            {% endif %}
+            <span class="badge">{{ property.badge }}</span>
+            <span class="price">{{ property.price }}</span>
+        </div>
+        
+        <div class="property-info">
+            <h3>{{ property.title }}</h3>
+            <div class="property-location">
+                <i class="fas fa-map-marker-alt"></i>
+                {{ property.location }}
+            </div>
+            <div class="property-features">
+                <div class="feature">
+                    <i class="fas fa-bed"></i>
+                    <span>{{ property.beds }} Beds</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-bath"></i>
+                    <span>{{ property.baths }} Baths</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-ruler-combined"></i>
+                    <span>{{ property.sqft }} sqft</span>
+                </div>
+            </div>
+        </div>
     </div>
     
-    <!-- TikTok Link (if available) -->
+    <!-- TikTok Link (OUTSIDE the clickable area) -->
     {% if property.tiktok %}
-    <a href="{{ property.tiktok }}" target="_blank" class="tiktok-btn" onclick="event.stopPropagation();">
+    <a href="{{ property.tiktok }}" target="_blank" class="tiktok-btn">
         <i class="fab fa-tiktok"></i> View on TikTok
     </a>
     {% endif %}
     
-    <div class="property-info">
-        <h3>{{ property.title }}</h3>
-        <div class="property-location">
-            <i class="fas fa-map-marker-alt"></i>
-            {{ property.location }}
-        </div>
-        <div class="property-features">
-            <div class="feature">
-                <i class="fas fa-bed"></i>
-                <span>{{ property.beds }} Beds</span>
-            </div>
-            <div class="feature">
-                <i class="fas fa-bath"></i>
-                <span>{{ property.baths }} Baths</span>
-            </div>
-            <div class="feature">
-                <i class="fas fa-ruler-combined"></i>
-                <span>{{ property.sqft }} sqft</span>
-            </div>
-        </div>
-    </div>
 </div>
 {% endfor %}
         </div>

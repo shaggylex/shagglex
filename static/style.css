@@ -111,6 +111,11 @@ nav.scrolled {
     overflow: hidden;
     transition: all 0.4s ease;
     cursor: pointer;
+    position: relative;
+}
+
+.card-main{
+    cursor: pointer;
 }
 
 .property-card:hover {
@@ -764,13 +769,15 @@ footer {
     transition: all 0.2s;
     border: 1px solid #fe2c55;
     text-decoration: none;
-    margin: 10px 15px;
-    font-size: 0.9rem;
+    margin: 10px 15px 15px 15px;
+    text-align: center;
+    position: relative;
+    z-index: 10;
 }
 
 .tiktok-btn:hover {
     background: #fe2c55;
-    transform: scale(1.05);
+    transform: scale(1.02);
 }
 
 .tiktok-btn i {
