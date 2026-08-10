@@ -1,4 +1,4 @@
-html = '''<!DOCTYPE html>
+'<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -92,22 +92,26 @@ html = '''<!DOCTYPE html>
             {% for property in properties %}
             <div class="property-card">
                 
-                <!-- TikTok Video Embed -->
                 {% if property.tiktok %}
-                <blockquote class="tiktok-embed" cite="{{ property.tiktok }}" style="max-width: 100%; min-width: 100%;">
-                    <section></section>
-                </blockquote>
+                    <!-- Extract video ID from TikTok URL -->
+                    {% set video_id = property.tiktok.split('/video/')[1].split('?')[0] %}
+                    <blockquote class="tiktok-embed" 
+                        cite="{{ property.tiktok }}"
+                        data-video-id="{{ video_id }}"
+                        style="max-width: 100%; min-width: 100%; margin: 0; padding: 0; border: none;">
+                        <section></section>
+                    </blockquote>
                 {% else %}
-                <!-- Fallback Image if no TikTok -->
-                <div class="property-image">
-                    {% if property.images and property.images|length > 0 %}
-                        <img src="{{ url_for('static', filename=property.images[0].replace('static/', '')) }}" alt="{{ property.title }}">
-                    {% else %}
-                        <img src="{{ url_for('static', filename='image/shaggylex logo.png') }}" alt="{{ property.title }}">
-                    {% endif %}
-                    <span class="badge">{{ property.badge }}</span>
-                    <span class="price">{{ property.price }}</span>
-                </div>
+                    <!-- Fallback Image -->
+                    <div class="property-image">
+                        {% if property.images and property.images|length > 0 %}
+                            <img src="{{ url_for('static', filename=property.images[0]) }}" alt="{{ property.title }}">
+                        {% else %}
+                            <img src="{{ url_for('static', filename='image/shaggylex logo.png') }}" alt="{{ property.title }}">
+                        {% endif %}
+                        <span class="badge">{{ property.badge }}</span>
+                        <span class="price">{{ property.price }}</span>
+                    </div>
                 {% endif %}
                 
                 <div class="property-info">
