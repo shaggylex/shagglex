@@ -11,6 +11,9 @@ properties_db = [
         "title": "Modern Luxury Villa",
         "price": "₦850,000",
         "location": "Beverly Hills, CA",
+        "images": [
+            "image/villa1.jpg"
+        ],
         "tiktok": "https://www.tiktok.com/@shaggylexproperty/video/7670497515917020437?is_from_webapp=1&sender_device=pc",
         "beds": 5,
         "baths": 4,
@@ -24,6 +27,9 @@ properties_db = [
         "title": "Skyline Penthouse",
         "price": "₦400,000,000",
         "location": "Semi Detached, Lagos",
+        "images": [
+            "image/penthouse1.jpg"
+        ],
         "tiktok": "https://www.tiktok.com/@shaggylexproperty/video/7643429980919041301?is_from_webapp=1&sender_device=pc",
         "beds": 3,
         "baths": 3,

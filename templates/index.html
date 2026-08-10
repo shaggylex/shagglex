@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+html = '''<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -87,28 +87,52 @@
             </button>
         </div>
         
-        <!-- Property Grid -->
+        <!-- Property Grid with TikTok Videos -->
         <div class="property-grid">
-
-<div class="property-card">
-
-    <!-- TikTok Video Shows Here -->
-    {% if property.tiktok %}
-    <blockquote class="tiktok-embed" cite="{{ property.tiktok }}" style="max-width: 100%; min-width: 100%;">
-        <section></section>
-    </blockquote>
-    {% endif %}
-    
-    <h3>{{ property.title }}</h3>
-    <p>{{ property.price }}</p>
-    
-</div>
-{% endfor %}
-        </div>
-
-
-<!-- TikTok Embed Script (add once at bottom of page, before </body>) -->
-<script async src="https://www.tiktok.com/embed.js"></script>
+            {% for property in properties %}
+            <div class="property-card">
+                
+                <!-- TikTok Video Embed -->
+                {% if property.tiktok %}
+                <blockquote class="tiktok-embed" cite="{{ property.tiktok }}" style="max-width: 100%; min-width: 100%;">
+                    <section></section>
+                </blockquote>
+                {% else %}
+                <!-- Fallback Image if no TikTok -->
+                <div class="property-image">
+                    {% if property.images and property.images|length > 0 %}
+                        <img src="{{ url_for('static', filename=property.images[0].replace('static/', '')) }}" alt="{{ property.title }}">
+                    {% else %}
+                        <img src="{{ url_for('static', filename='image/shaggylex logo.png') }}" alt="{{ property.title }}">
+                    {% endif %}
+                    <span class="badge">{{ property.badge }}</span>
+                    <span class="price">{{ property.price }}</span>
+                </div>
+                {% endif %}
+                
+                <div class="property-info">
+                    <h3>{{ property.title }}</h3>
+                    <div class="property-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        {{ property.location }}
+                    </div>
+                    <div class="property-features">
+                        <div class="feature">
+                            <i class="fas fa-bed"></i>
+                            <span>{{ property.beds }} Beds</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-bath"></i>
+                            <span>{{ property.baths }} Baths</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-ruler-combined"></i>
+                            <span>{{ property.sqft }} sqft</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
         </div>
     </section>
 
@@ -309,6 +333,9 @@
     <!-- Toast Notification -->
     <div class="toast" id="toast">Message sent successfully!</div>
 
+    <!-- TikTok Embed Script -->
+    <script async src="https://www.tiktok.com/embed.js"></script>
+
     <!--Start of Tawk.to Script-->
     <script type="text/javascript">
     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
@@ -323,6 +350,6 @@
     </script>
     <!--End of Tawk.to Script-->
 
-    <script src="{{ url_for('static', filename='main.js') }}"></script>
+    <script src="templates/static/main.js"></script>
 </body>
 </html>
