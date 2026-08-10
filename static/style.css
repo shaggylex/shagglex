@@ -754,6 +754,24 @@ footer {
 
 .footer-links a:hover { color: var(--primary-light); }
 
+.tiktok-btn {
+    display: inline-block;
+    background: #000000;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: all 0.2s;
+    border: 1px solid #fe2c55;
+    text-decoration: none;
+}
+
+.tiktok-btn:hover {
+    background: #fe2c55;
+    transform: scale(1.05);
+}
+
 .social-links {
     display: flex;
     gap: 1rem;
