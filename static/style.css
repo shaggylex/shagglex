@@ -23,7 +23,7 @@ body {
 ::-webkit-scrollbar-track { background: var(--dark); }
 ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 4px; }
 
-/* Navigation */
+/* ========== NAVIGATION ========== */
 nav {
     position: fixed;
     top: 0;
@@ -54,98 +54,11 @@ nav.scrolled {
     width: auto;
     filter: drop-shadow(0 0 10px rgba(147, 51, 234, 0.5));
 }
+
 .nav-links {
     display: flex;
     gap: 2.5rem;
     list-style: none;
-}
-
-.property-video {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 3 / 4;
-    overflow: hidden;
-    border-radius: 12px;
-    background: #000;
-}
-
-.property-video video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-/* Badge & Price */
-.badge {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    background: var(--primary);
-    color: #fff;
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    z-index: 2;
-}
-
-.price {
-    position: absolute;
-    bottom: 12px;
-    right: 12px;
-    background: rgba(0, 0, 0, 0.8);
-    color: #fff;
-    padding: 8px 16px;
-    border-radius: 8px;
-    font-weight: 700;
-    z-index: 2;
-}
-
-/* ========== PROPERTY CARD ========== */
-.property-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(147, 51, 234, 0.1);
-    border-radius: 20px;
-    overflow: hidden;
-    transition: all 0.4s ease;
-    cursor: pointer;
-    position: relative;
-}
-
-.card-main{
-    cursor: pointer;
-}
-
-.property-card:hover {
-    transform: translateY(-10px);
-    border-color: var(--primary-light);
-    box-shadow: 0 20px 40px rgba(107, 33, 168, 0.2);
-}
-
-/* ========== PROPERTY INFO ========== */
-.property-info {
-    padding: 1.5rem;
-}
-
-.property-info h3 {
-    font-size: 1.3rem;
-    margin-bottom: 0.5rem;
-    color: #fff;
-}
-
-/* ========== RESPONSIVE ========== */
-@media (max-width: 768px) {
-    .property-video {
-        aspect-ratio: 3 / 4;
-    }
-}
-
-@media (min-width: 769px) {
-    .property-video {
-        aspect-ratio: 4 / 5;
-        max-height: 400px;
-    }
 }
 
 .nav-links a {
@@ -182,7 +95,7 @@ nav.scrolled {
     cursor: pointer;
 }
 
-/* Hero Section */
+/* ========== HERO SECTION ========== */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -287,27 +200,6 @@ nav.scrolled {
     flex-wrap: wrap;
 }
 
-.image-scroll {
-    display: flex;
-    overflow-x: auto;  /* <-- Makes it horizontally scrollable */
-    scroll-snap-type: x mandatory;
-    gap: 10px;
-    padding: 10px;
-}
-
-.image-scroll img {
-    min-width: 100%;   /* Each image takes full width */
-    height: 250px;
-    object-fit: cover;
-    scroll-snap-align: start;
-    border-radius: 10px;
-}
-
-/* Hide scrollbar but keep functionality */
-.image-scroll::-webkit-scrollbar {
-    display: none;
-}
-
 .btn {
     padding: 1rem 2.5rem;
     border-radius: 50px;
@@ -358,7 +250,7 @@ nav.scrolled {
     60% { transform: translateX(-50%) translateY(-10px); }
 }
 
-/* Section Styles */
+/* ========== SECTION STYLES ========== */
 section { padding: 6rem 5%; position: relative; }
 
 .section-header {
@@ -388,11 +280,66 @@ section { padding: 6rem 5%; position: relative; }
     border-radius: 2px;
 }
 
-/* Properties Section */
+/* ========== STATS SECTION ========== */
+.stats {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+    padding: 4rem 5%;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 3rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.stat-item h3 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+}
+
+.stat-item p {
+    font-size: 1rem;
+    opacity: 0.9;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* ========== PROPERTIES SECTION ========== */
 .properties {
     background: linear-gradient(180deg, var(--darker) 0%, var(--dark) 100%);
 }
 
+.search-container {
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.search-container input {
+    flex: 1;
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(147, 51, 234, 0.2);
+    border-radius: 50px;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+}
+
+.search-container input:focus {
+    outline: none;
+    border-color: var(--primary-light);
+    box-shadow: 0 0 20px rgba(147, 51, 234, 0.1);
+}
+
+.search-container input::placeholder { color: var(--gray); }
+
+/* Property Grid */
 .property-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -401,6 +348,7 @@ section { padding: 6rem 5%; position: relative; }
     margin: 0 auto;
 }
 
+/* Property Card */
 .property-card {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(147, 51, 234, 0.1);
@@ -416,7 +364,75 @@ section { padding: 6rem 5%; position: relative; }
     box-shadow: 0 20px 40px rgba(107, 33, 168, 0.2);
 }
 
+/* ========== TIKTOK EMBED (REPLACES VIDEO) ========== */
+.property-media {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9 / 16;      /* TikTok vertical ratio */
+    overflow: hidden;
+    border-radius: 12px;
+    background: #000;
+}
+
+.property-tiktok {
+    width: 100%;
+    height: 100%;
+}
+
+.property-tiktok iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+/* Fallback when no TikTok URL */
+.property-tiktok-empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #2d1b4e 0%, #1a0b2e 100%);
+}
+
+.property-tiktok-empty i {
+    font-size: 4rem;
+    color: var(--primary-light);
+    opacity: 0.5;
+}
+
+/* Badge & Price Overlay */
+.property-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: var(--primary);
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    z-index: 2;
+}
+
+.property-price {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    z-index: 2;
+}
+
+/* Property Info */
 .property-info { padding: 1.5rem; }
+
 .property-info h3 {
     font-size: 1.3rem;
     margin-bottom: 0.5rem;
@@ -449,7 +465,7 @@ section { padding: 6rem 5%; position: relative; }
 
 .feature i { color: var(--primary-light); }
 
-/* Services Section */
+/* ========== SERVICES SECTION ========== */
 .services { background: var(--darker); }
 
 .services-grid {
@@ -516,35 +532,7 @@ section { padding: 6rem 5%; position: relative; }
     transition: color 0.4s;
 }
 
-/* Stats Section */
-.stats {
-    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
-    padding: 4rem 5%;
-}
-
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 3rem;
-    max-width: 1000px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.stat-item h3 {
-    font-size: 3rem;
-    font-weight: 800;
-    margin-bottom: 0.5rem;
-}
-
-.stat-item p {
-    font-size: 1rem;
-    opacity: 0.9;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-/* About Section */
+/* ========== ABOUT SECTION ========== */
 .about { background: var(--dark); }
 
 .about-content {
@@ -603,7 +591,7 @@ section { padding: 6rem 5%; position: relative; }
     font-size: 1.2rem;
 }
 
-/* Contact Section */
+/* ========== CONTACT SECTION ========== */
 .contact {
     background: linear-gradient(180deg, var(--dark) 0%, var(--darker) 100%);
 }
@@ -711,7 +699,7 @@ section { padding: 6rem 5%; position: relative; }
     gap: 1rem;
 }
 
-/* Footer */
+/* ========== FOOTER ========== */
 footer {
     background: var(--darker);
     border-top: 1px solid rgba(147, 51, 234, 0.1);
@@ -758,34 +746,7 @@ footer {
 
 .footer-links a:hover { color: var(--primary-light); }
 
-.service 
-.about
-.contact {
-    display: block !important;
-    visibility: visible !important;
-}
-
-.tiktok-btn {
-    display: block;
-    background: #000000;
-    color: #ffffff;
-    padding: 12px;
-    border-radius: 0 0 8px 8px;
-    font-weight: bold;
-    border: 2px solid #fe2c55;
-    text-decoration: none;
-    text-align: center;
-    margin-top: -5px;
-}
-
-.tiktok-btn:hover {
-    background: #fe2c55;
-}
-
-.tiktok-btn i {
-    margin-right: 8px;
-}
-
+/* Social Links */
 .social-links {
     display: flex;
     gap: 1rem;
@@ -811,6 +772,28 @@ footer {
     transform: translateY(-3px);
 }
 
+/* TikTok Button */
+.tiktok-btn {
+    display: block;
+    background: #000000;
+    color: #ffffff;
+    padding: 12px;
+    border-radius: 0 0 8px 8px;
+    font-weight: bold;
+    border: 2px solid #fe2c55;
+    text-decoration: none;
+    text-align: center;
+    margin-top: -5px;
+}
+
+.tiktok-btn:hover {
+    background: #fe2c55;
+}
+
+.tiktok-btn i {
+    margin-right: 8px;
+}
+
 .footer-bottom {
     text-align: center;
     padding-top: 2rem;
@@ -820,7 +803,7 @@ footer {
     font-size: 0.85rem;
 }
 
-/* Modal */
+/* ========== MODAL ========== */
 .modal {
     display: none;
     position: fixed;
@@ -867,7 +850,7 @@ footer {
 
 .modal-close:hover { color: #fff; }
 
-/* Toast Notification */
+/* ========== TOAST ========== */
 .toast {
     position: fixed;
     bottom: 2rem;
@@ -885,34 +868,7 @@ footer {
 
 .toast.show { transform: translateX(0); }
 
-/* Search Bar */
-.search-container {
-    max-width: 800px;
-    margin: 0 auto 3rem;
-    display: flex;
-    gap: 1rem;
-}
-
-.search-container input {
-    flex: 1;
-    padding: 1rem 1.5rem;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(147, 51, 234, 0.2);
-    border-radius: 50px;
-    color: #fff;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1rem;
-}
-
-.search-container input:focus {
-    outline: none;
-    border-color: var(--primary-light);
-    box-shadow: 0 0 20px rgba(147, 51, 234, 0.1);
-}
-
-.search-container input::placeholder { color: var(--gray); }
-
-/* Animations */
+/* ========== ANIMATIONS ========== */
 .fade-in {
     opacity: 0;
     transform: translateY(30px);
@@ -924,7 +880,7 @@ footer {
     transform: translateY(0);
 }
 
-/* Responsive */
+/* ========== RESPONSIVE ========== */
 @media (max-width: 968px) {
     .nav-links { display: none; }
     .mobile-menu-btn { display: block; }
@@ -939,4 +895,5 @@ footer {
     .property-grid { grid-template-columns: 1fr; }
     .footer-content { grid-template-columns: 1fr; }
     .stats-grid { grid-template-columns: 1fr 1fr; }
+    .property-media { aspect-ratio: 9 / 16; }
 }
