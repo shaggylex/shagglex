@@ -280,6 +280,30 @@ section { padding: 6rem 5%; position: relative; }
     border-radius: 2px;
 }
 
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 30px;
+    right: 30px;
+    background-color: #25d366;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    z-index: 9999;
+    text-decoration: none;
+    transition: transform 0.3s;
+}
+
+.whatsapp-float:hover { 
+    transform: translateY(1.1); 
+}
+
 /* ========== STATS SECTION ========== */
 .stats {
     background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
