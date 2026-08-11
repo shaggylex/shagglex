@@ -20,13 +20,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // ========== FADE-IN ANIMATIONS ==========
-const observer = new IntersectionObserver((entries) => {
+const fadeObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add('visible');
     });
 }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
 
 // ========== COUNTER ANIMATION ==========
 const counterObserver = new IntersectionObserver((entries) => {
@@ -124,23 +124,49 @@ function handleSubmit(e) {
     });
 }
 
+// ========== TIKTOK EMBED HELPER ==========
+function getTikTokEmbedUrl(tiktokUrl) {
+    if (!tiktokUrl) return null;
+    // If it's already just an ID (numbers only)
+    if (/^\d+$/.test(tiktokUrl)) {
+        return `https://www.tiktok.com/embed/${tiktokUrl}`;
+    }
+    // Extract ID from full URL like https://www.tiktok.com/@user/video/1234567890
+    const match = tiktokUrl.match(/\/video\/(\d+)/);
+    if (match) {
+        return `https://www.tiktok.com/embed/${match[1]}`;
+    }
+    return null;
+}
 
-// ========== PROPERTY GRID (FIXED - Uses VIDEO not icons) ==========
+// ========== PROPERTY GRID (TIKTOK EMBED) ==========
 function updatePropertyGrid(properties) {
     const grid = document.querySelector('.property-grid');
     if (!grid) return;
 
-    grid.innerHTML = properties.map(p => `
+    grid.innerHTML = properties.map(p => {
+        const tiktokUrl = getTikTokEmbedUrl(p.tiktok);
+        const mediaHtml = tiktokUrl ? `
+            <div class="property-tiktok">
+                <iframe 
+                    src="${tiktokUrl}" 
+                    frameborder="0" 
+                    scrolling="no" 
+                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        ` : `
+            <div class="property-tiktok property-tiktok-empty">
+                <i class="fas fa-home"></i>
+            </div>
+        `;
+
+        return `
         <div class="property-card fade-in visible" 
              onclick="showPropertyDetails('${p.title}', '${p.price}', '${p.location}', '${p.description || ''}')">
-            <div class="property-video">
-                <video 
-                    src="${p.video}" 
-                    muted 
-                    playsinline
-                    preload="metadata"
-                    poster="${p.poster || ''}">
-                </video>
+            <div class="property-media">
+                ${mediaHtml}
                 <span class="property-badge">${p.badge}</span>
                 <span class="property-price">${p.price}</span>
             </div>
@@ -156,10 +182,8 @@ function updatePropertyGrid(properties) {
                 </div>
             </div>
         </div>
-    `).join('');
-    
-    // Re-initialize video handlers after grid update
-    initVideos();
+        `;
+    }).join('');
 }
 
 // ========== SEARCH ==========
@@ -209,5 +233,4 @@ function loadAllProperties() {
 
 document.addEventListener('DOMContentLoaded', () => {
     loadAllProperties();
-    initVideos(); // Also init for any static videos on page
 });
