@@ -124,47 +124,6 @@ function handleSubmit(e) {
     });
 }
 
-// ========== VIDEO HANDLER (FIXED - Only ONE handler) ==========
-function initVideos() {
-    const videos = document.querySelectorAll('.property-video video');
-    
-    // Use Intersection Observer to play videos when visible
-    const videoObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            const video = entry.target;
-            
-            if (entry.isIntersecting) {
-                // Video is visible - play it
-                video.play().catch(e => {
-                    console.log('Autoplay blocked:', e);
-                    // Show play button if autoplay fails
-                    video.closest('.property-video').classList.remove('video-playing');
-                });
-                video.closest('.property-video').classList.add('video-playing');
-            } else {
-                // Video is not visible - pause and reset
-                video.pause();
-                video.currentTime = 0;
-                video.closest('.property-video').classList.remove('video-playing');
-            }
-        });
-    }, {
-        threshold: 0.5  // Play when 50% of video is visible
-    });
-    
-    videos.forEach(video => {
-        video.muted = true;        // REQUIRED for autoplay
-        video.loop = true;         // Loop continuously
-        video.playsInline = true;  // Required for iPhone
-        video.setAttribute('playsinline', ''); // iOS fix
-        
-        // Observe each video
-        videoObserver.observe(video);
-    });
-}
-
-// Run on page load
-document.addEventListener('DOMContentLoaded', initVideos);
 
 // ========== PROPERTY GRID (FIXED - Uses VIDEO not icons) ==========
 function updatePropertyGrid(properties) {
