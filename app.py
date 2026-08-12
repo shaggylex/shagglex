@@ -87,54 +87,6 @@ properties_db = [
         "description": "Perfect family home in top-rated school district with large backyard and finished basement.",
         "featured": False
     },
-      {
-            "id": 6,
-            "title": "Alpine Mountain Retreat",
-            "price": "₦1,800,000",
-            "location": "Aspen, CO",
-            "images": [
-                "image/mountain1.jpg"
-            ],
-            "tiktok": "",
-            "beds": 4,
-            "baths": 3,
-            "sqft": "Not specified",
-            "badge": "For Sale",
-            "description": "Ski-in/ski-out luxury cabin with heated floors, stone fireplace, and mountain views.",
-            "featured": False
-        },
-     {
-        "id": 7,
-        "title": "Alpine Mountain Retreat",
-        "price": "₦1,800,000",
-        "location": "Aspen, CO",
-         "images": [
-            "image/mountain1.jpg"
-        ],
-        "tiktok": "",
-        "beds": 4,
-        "baths": 3,
-        "sqft": "Not specified",
-        "badge": "For Sale",
-        "description": "Ski-in/ski-out luxury cabin with heated floors, stone fireplace, and mountain views.",
-        "featured": False
-    },
-    {
-        "id": 8,
-        "title": "Alpine Mountain Retreat",
-        "price": "₦1,800,000",
-        "location": "Aspen, CO",
-         "images": [
-            "image/mountain1.jpg"
-        ],
-        "tiktok": "",
-        "beds": 4,
-        "baths": 3,
-        "sqft": "Not specified",
-        "badge": "For Sale",
-        "description": "Ski-in/ski-out luxury cabin with heated floors, stone fireplace, and mountain views.",
-        "featured": False
-    },
 ]
 
 contacts_db = []
