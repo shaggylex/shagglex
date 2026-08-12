@@ -18,7 +18,7 @@ properties_db = [
         "tiktok": "https://www.tiktok.com/@shaggylexproperty/video/7563959985529523474?is_from_webapp=1&sender_device=pc&web_id=7567663620428563985",
         "beds": 6,
         "baths": 6,
-        "sqft": "4,200",
+        "sqft": "Not specified",
         "badge": "For Sale",
         "description": "Stunning modern villa with panoramic city views, infinity pool, and smart home technology.",
         "featured": True
@@ -34,7 +34,7 @@ properties_db = [
         "tiktok": "https://www.tiktok.com/@shaggylexproperty/video/7643429980919041301?is_from_webapp=1&sender_device=pc",
         "beds": 5,
         "baths": 5,
-        "sqft": "2,800",
+        "sqft": "Not specified",
         "badge": "For Sale",
         "description": "Exclusive penthouse with 360° skyline views, private elevator, and rooftop terrace.",
         "featured": True
@@ -50,7 +50,7 @@ properties_db = [
         "tiktok": "https://www.tiktok.com/@shaggylexproperty/video/7656940062935977237?is_from_webapp=1&sender_device=pc",
         "beds": 6,
         "baths": 5,
-        "sqft": "5,500",
+        "sqft": "Not specified",
         "badge": "Premium",
         "description": "Direct ocean access, private beach, and resort-style amenities in this gated estate.",
         "featured": True
@@ -66,7 +66,7 @@ properties_db = [
         "tiktok": "https://www.tiktok.com/@shaggylexproperty/video/7631515055208697109?is_from_webapp=1&sender_device=pc",
         "beds": 4,
         "baths": 4,
-        "sqft": "1,800",
+        "sqft": "Not specified",
         "badge": "For Rent",
         "description": "Industrial-chic loft in the heart of downtown with exposed brick and modern finishes.",
         "featured": False
@@ -82,7 +82,7 @@ properties_db = [
         "tiktok": "https://www.tiktok.com/@shaggylexproperty/video/7657117696764431636?is_from_webapp=1&sender_device=pc&web_id=7567663620428563985",
         "beds": 4,
         "baths": 3,
-        "sqft": "2,900",
+        "sqft": "Not specified",
         "badge": "For Sale",
         "description": "Perfect family home in top-rated school district with large backyard and finished basement.",
         "featured": False
@@ -98,7 +98,7 @@ properties_db = [
             "tiktok": "",
             "beds": 4,
             "baths": 3,
-            "sqft": "3,600",
+            "sqft": "Not specified",
             "badge": "For Sale",
             "description": "Ski-in/ski-out luxury cabin with heated floors, stone fireplace, and mountain views.",
             "featured": False
@@ -114,7 +114,7 @@ properties_db = [
         "tiktok": "",
         "beds": 4,
         "baths": 3,
-        "sqft": "3,600",
+        "sqft": "Not specified",
         "badge": "For Sale",
         "description": "Ski-in/ski-out luxury cabin with heated floors, stone fireplace, and mountain views.",
         "featured": False
@@ -130,7 +130,7 @@ properties_db = [
         "tiktok": "",
         "beds": 4,
         "baths": 3,
-        "sqft": "3,600",
+        "sqft": "Not specified",
         "badge": "For Sale",
         "description": "Ski-in/ski-out luxury cabin with heated floors, stone fireplace, and mountain views.",
         "featured": False
