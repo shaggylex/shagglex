@@ -2,21 +2,22 @@ from flask import Flask, redirect, render_template, request, jsonify, url_for
 from datetime import datetime
 import os
 
+
 app = Flask(__name__)  # <-- THIS MUST BE FIRST
 
 # In-memory database
 properties_db = [
      {
         "id": 1,
-        "title": "Modern Luxury Villa",
-        "price": "₦850,000",
-        "location": "Beverly Hills, CA",
+        "title": "Luxury",
+        "price": "₦750,000,000",
+        "location": "Chevron, lekki, lagos.",
         "images": [
             "image/villa1.jpg"
         ],
         "tiktok": "https://www.tiktok.com/@shaggylexproperty/video/7563959985529523474?is_from_webapp=1&sender_device=pc&web_id=7567663620428563985",
-        "beds": 5,
-        "baths": 4,
+        "beds": 6,
+        "baths": 6,
         "sqft": "4,200",
         "badge": "For Sale",
         "description": "Stunning modern villa with panoramic city views, infinity pool, and smart home technology.",
@@ -24,15 +25,15 @@ properties_db = [
     },
     {
         "id": 2,
-        "title": "Skyline Penthouse",
-        "price": "₦400,000,000",
-        "location": "Semi Detached, Lagos",
+        "title": "Luxury",
+        "price": "₦600,000,000",
+        "location": "Omole phase 1",
         "images": [
             "image/penthouse1.jpg"
         ],
         "tiktok": "https://www.tiktok.com/@shaggylexproperty/video/7643429980919041301?is_from_webapp=1&sender_device=pc",
-        "beds": 3,
-        "baths": 3,
+        "beds": 5,
+        "baths": 5,
         "sqft": "2,800",
         "badge": "For Sale",
         "description": "Exclusive penthouse with 360° skyline views, private elevator, and rooftop terrace.",
@@ -40,9 +41,9 @@ properties_db = [
     },
     {
         "id": 3,
-        "title": "Oceanfront Estate",
-        "price": "₦450,000,000",
-        "location": "Miami Beach, FL",
+        "title": "Semi-Detached",
+        "price": "₦300,000,000",
+        "location": "Opebi ikeja, Lagos",
         "images": [
             "image/estate1.jpg"
         ],
@@ -56,15 +57,15 @@ properties_db = [
     },
     {
         "id": 4,
-        "title": "Urban Downtown Loft",
-        "price": "₦3,500/mo",
-        "location": "Austin, TX",
+        "title": "Smart Home",
+        "price": "₦400,000,000",
+        "location": "Monumental Estate, Opebi ikeja",
         "images": [
             "image/loft1.jpg"
         ],
         "tiktok": "https://www.tiktok.com/@shaggylexproperty/video/7631515055208697109?is_from_webapp=1&sender_device=pc",
-        "beds": 2,
-        "baths": 2,
+        "beds": 4,
+        "baths": 4,
         "sqft": "1,800",
         "badge": "For Rent",
         "description": "Industrial-chic loft in the heart of downtown with exposed brick and modern finishes.",
@@ -72,25 +73,9 @@ properties_db = [
     },
     {
         "id": 5,
-        "title": "Alpine Mountain Retreat",
-        "price": "₦1,800,000",
-        "location": "Aspen, CO",
-        "images": [
-            "image/mountain1.jpg"
-        ],
-        "tiktok": "https://www.tiktok.com/@shaggylexproperty/photo/7665040088803462420?is_from_webapp=1&sender_device=pc&web_id=7567663620428563985",
-        "beds": 4,
-        "baths": 3,
-        "sqft": "3,600",
-        "badge": "For Sale",
-        "description": "Ski-in/ski-out luxury cabin with heated floors, stone fireplace, and mountain views.",
-        "featured": False
-    },
-    {
-        "id": 6,
-        "title": "Family Suburban Home",
-        "price": "₦650,000",
-        "location": "Naperville, IL",
+        "title": "Luxury",
+        "price": "₦280,000,000",
+        "location": "Opebi ikeja,lagos",
         "images": [
             "image/familyhome1.jpg"
         ],
@@ -102,6 +87,22 @@ properties_db = [
         "description": "Perfect family home in top-rated school district with large backyard and finished basement.",
         "featured": False
     },
+      {
+            "id": 6,
+            "title": "Alpine Mountain Retreat",
+            "price": "₦1,800,000",
+            "location": "Aspen, CO",
+            "images": [
+                "image/mountain1.jpg"
+            ],
+            "tiktok": "",
+            "beds": 4,
+            "baths": 3,
+            "sqft": "3,600",
+            "badge": "For Sale",
+            "description": "Ski-in/ski-out luxury cabin with heated floors, stone fireplace, and mountain views.",
+            "featured": False
+        },
      {
         "id": 7,
         "title": "Alpine Mountain Retreat",
@@ -110,7 +111,7 @@ properties_db = [
          "images": [
             "image/mountain1.jpg"
         ],
-        "tiktok": "https://www.tiktok.com/@shaggylexproperty/video/7643429980919041301?is_from_webapp=1&sender_device=pc",
+        "tiktok": "",
         "beds": 4,
         "baths": 3,
         "sqft": "3,600",
