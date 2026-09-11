@@ -181,6 +181,10 @@ def delete_contact(contact_id):
     contacts_db = [c for c in contacts_db if c['id'] != contact_id]
     return redirect(url_for('admin_dashboard'))
 
+@app.route('/about/ceo')
+def ceo_page():
+    return render_template('ceo.html', year=datetime.now().year)
+
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
